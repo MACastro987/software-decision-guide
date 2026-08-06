@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Home",
+    "url": "/"
+  },
+  {
+    "name": "CRM Guide",
+    "url": "/crm-decision-guide"
+  },
+  {
+    "name": "Articles",
+    "url": "/blog"
+  },
+  {
+    "name": "About",
+    "url": "/about"
+  },
+  {
+    "name": "Contact",
+    "url": "/contact"
+  }
+]
