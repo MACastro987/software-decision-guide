@@ -3,42 +3,210 @@ import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout title="CRM Decision Guide | Software Decision Guide">
-  <main class="site-container py-32">
-    <p class="mb-4 text-sm font-semibold uppercase tracking-wide text-primary">
-      CRM Decision Guide
-    </p>
-
-    <h1 class="mb-6 max-w-3xl text-5xl font-brand text-primary">
-      Find your CRM direction.
-    </h1>
-
-    <p class="max-w-2xl text-lg leading-relaxed text-neutral-600 dark:text-neutral-300">
-      Answer a few structured questions about your team, budget, sales process, reporting needs, and implementation priorities.
-    </p>
-
-    <section class="mt-12 max-w-2xl rounded-2xl border border-primary/15 bg-bg-secondary/60 p-6">
-      <p class="mb-2 text-sm font-semibold text-primary">
-        Quiz MVP coming next
+  <main class="site-container py-28">
+    <section class="mx-auto max-w-3xl">
+      <p class="mb-4 text-sm font-semibold uppercase tracking-wide text-primary">
+        CRM Decision Guide
       </p>
 
-      <h2 class="mb-4 text-2xl font-semibold text-neutral-800 dark:text-neutral-100">
-        What matters most in your CRM decision?
-      </h2>
+      <h1 class="mb-5 text-5xl font-brand text-primary">
+        Find your CRM direction.
+      </h1>
 
-      <div class="grid gap-3">
-        <button class="rounded-xl border border-primary/20 px-4 py-3 text-left text-neutral-700 dark:text-neutral-200">
-          Speed of implementation
-        </button>
-        <button class="rounded-xl border border-primary/20 px-4 py-3 text-left text-neutral-700 dark:text-neutral-200">
-          Lowest cost
-        </button>
-        <button class="rounded-xl border border-primary/20 px-4 py-3 text-left text-neutral-700 dark:text-neutral-200">
-          Ease of use
-        </button>
-        <button class="rounded-xl border border-primary/20 px-4 py-3 text-left text-neutral-700 dark:text-neutral-200">
-          Reporting and attribution
-        </button>
+      <p class="mb-10 max-w-2xl text-lg leading-relaxed text-neutral-600 dark:text-neutral-300">
+        Answer five quick questions and get a clearer CRM recommendation path based on your priorities.
+      </p>
+
+      <div class="rounded-2xl border border-primary/15 bg-bg-secondary/70 p-6 shadow-sm">
+        <div class="mb-6">
+          <div class="mb-2 flex items-center justify-between text-sm text-neutral-500 dark:text-neutral-400">
+            <span id="stepLabel">Question 1 of 5</span>
+            <span id="progressPercent">20%</span>
+          </div>
+          <div class="h-2 rounded-full bg-primary/10">
+            <div id="progressBar" class="h-2 rounded-full bg-primary transition-all" style="width: 20%;"></div>
+          </div>
+        </div>
+
+        <div id="quizPanel">
+          <h2 id="questionText" class="mb-6 text-2xl font-semibold text-neutral-800 dark:text-neutral-100">
+          </h2>
+
+          <div id="answerList" class="grid gap-3"></div>
+
+          <p id="rewardText" class="mt-5 min-h-6 text-sm text-primary"></p>
+        </div>
+
+        <div id="resultPanel" class="hidden">
+          <p class="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
+            Your CRM direction
+          </p>
+
+          <h2 id="resultTitle" class="mb-4 text-3xl font-brand text-primary"></h2>
+
+          <p id="resultDescription" class="mb-6 text-lg leading-relaxed text-neutral-600 dark:text-neutral-300"></p>
+
+          <div class="rounded-xl border border-primary/15 bg-bg-primary/50 p-4">
+            <p class="text-sm text-neutral-600 dark:text-neutral-300">
+              Next step: use this result to compare CRM options before talking to vendors. Affiliate links and sponsored results may appear in the future and will be clearly labeled.
+            </p>
+          </div>
+
+          <button id="restartButton" class="mt-6 rounded-xl border border-primary/20 px-4 py-3 text-neutral-700 dark:text-neutral-200">
+            Retake guide
+          </button>
+        </div>
       </div>
     </section>
   </main>
+
+  <script is:inline>
+    const questions = [
+      {
+        text: "What kind of CRM decision are you making?",
+        answers: [
+          { label: "Choosing our first CRM", result: "simple", reward: "Good — we’ll prioritize clarity and adoption." },
+          { label: "Replacing a CRM we do not like", result: "salesOps", reward: "Got it — we’ll focus on what needs to improve." },
+          { label: "Choosing between a few CRMs", result: "compare", reward: "Good — we’ll make the tradeoffs easier to explain." },
+          { label: "Improving tracking and reporting", result: "attribution", reward: "Great — measurement needs will shape the recommendation." }
+        ]
+      },
+      {
+        text: "What matters most right now?",
+        answers: [
+          { label: "Speed of implementation", result: "simple", reward: "Speed matters — we’ll favor faster launch paths." },
+          { label: "Lowest cost", result: "simple", reward: "Budget matters — we’ll keep complexity low." },
+          { label: "Ease of use", result: "simple", reward: "Adoption matters — simplicity gets more weight." },
+          { label: "Reporting and attribution", result: "attribution", reward: "Reporting matters — we’ll weight analytics fit higher." }
+        ]
+      },
+      {
+        text: "What are you trying to fix first?",
+        answers: [
+          { label: "Leads falling through the cracks", result: "salesOps", reward: "Pipeline control is a key signal." },
+          { label: "Sales follow-up is inconsistent", result: "salesOps", reward: "Follow-up discipline matters here." },
+          { label: "Marketing and sales are disconnected", result: "allInOne", reward: "All-in-one tools may become more relevant." },
+          { label: "We cannot see what is working", result: "attribution", reward: "Visibility and source tracking need priority." }
+        ]
+      },
+      {
+        text: "How much setup complexity can your team handle?",
+        answers: [
+          { label: "Almost none", result: "simple", reward: "Simple setup gets more weight." },
+          { label: "Some setup is fine", result: "allInOne", reward: "A balanced platform may fit." },
+          { label: "We have an admin or technical person", result: "salesOps", reward: "More configuration may be reasonable." },
+          { label: "We need deep customization", result: "custom", reward: "Customization is now a major factor." }
+        ]
+      },
+      {
+        text: "How important is marketing attribution?",
+        answers: [
+          { label: "Not important yet", result: "simple", reward: "Good — we won’t overbuild the first CRM path." },
+          { label: "Somewhat important", result: "allInOne", reward: "Basic source tracking should be considered." },
+          { label: "Very important", result: "attribution", reward: "Attribution should shape the CRM shortlist." },
+          { label: "Critical to revenue reporting", result: "attribution", reward: "Closed-loop reporting becomes a core requirement." }
+        ]
+      }
+    ];
+
+    const results = {
+      simple: {
+        title: "Simple CRM path",
+        description: "You likely need a CRM that is easy to launch, easy to use, and not overloaded with setup complexity. Prioritize adoption, clear contact records, basic pipeline tracking, and simple follow-up."
+      },
+      allInOne: {
+        title: "All-in-one growth platform",
+        description: "You likely need a CRM that connects sales, marketing, forms, email, automation, and reporting in one place. This path fits teams that want fewer disconnected tools."
+      },
+      salesOps: {
+        title: "Sales operations CRM",
+        description: "You likely need stronger pipeline visibility, follow-up discipline, ownership rules, and sales process structure. Prioritize workflow control and reporting over the simplest setup."
+      },
+      attribution: {
+        title: "Marketing attribution CRM",
+        description: "You likely need a CRM that supports source tracking, forms, UTMs, lifecycle stages, and closed-loop reporting. Measurement should be part of the buying criteria from the start."
+      },
+      custom: {
+        title: "Customizable scale CRM",
+        description: "You likely need a flexible CRM that can adapt to more complex processes, custom fields, integrations, and reporting requirements. Avoid tools that feel simple now but restrictive later."
+      },
+      compare: {
+        title: "Comparison decision path",
+        description: "You likely need a structured comparison rather than a single generic recommendation. Focus on the tradeoffs between cost, speed, adoption, reporting, and long-term flexibility."
+      }
+    };
+
+    let currentQuestion = 0;
+    let scores = {};
+
+    const questionText = document.getElementById("questionText");
+    const answerList = document.getElementById("answerList");
+    const rewardText = document.getElementById("rewardText");
+    const stepLabel = document.getElementById("stepLabel");
+    const progressPercent = document.getElementById("progressPercent");
+    const progressBar = document.getElementById("progressBar");
+    const quizPanel = document.getElementById("quizPanel");
+    const resultPanel = document.getElementById("resultPanel");
+    const resultTitle = document.getElementById("resultTitle");
+    const resultDescription = document.getElementById("resultDescription");
+    const restartButton = document.getElementById("restartButton");
+
+    function renderQuestion() {
+      const question = questions[currentQuestion];
+      const percent = Math.round(((currentQuestion + 1) / questions.length) * 100);
+
+      questionText.textContent = question.text;
+      stepLabel.textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+      progressPercent.textContent = `${percent}%`;
+      progressBar.style.width = `${percent}%`;
+      rewardText.textContent = "";
+      answerList.innerHTML = "";
+
+      question.answers.forEach((answer) => {
+        const button = document.createElement("button");
+        button.className = "rounded-xl border border-primary/20 px-4 py-4 text-left text-neutral-700 transition hover:border-primary hover:bg-primary/5 dark:text-neutral-200";
+        button.textContent = answer.label;
+
+        button.addEventListener("click", () => {
+          scores[answer.result] = (scores[answer.result] || 0) + 1;
+          rewardText.textContent = answer.reward;
+
+          setTimeout(() => {
+            currentQuestion += 1;
+
+            if (currentQuestion < questions.length) {
+              renderQuestion();
+            } else {
+              renderResult();
+            }
+          }, 450);
+        });
+
+        answerList.appendChild(button);
+      });
+    }
+
+    function renderResult() {
+      const winningKey = Object.keys(scores).sort((a, b) => scores[b] - scores[a])[0] || "simple";
+      const result = results[winningKey];
+
+      quizPanel.classList.add("hidden");
+      resultPanel.classList.remove("hidden");
+      stepLabel.textContent = "Complete";
+      progressPercent.textContent = "100%";
+      progressBar.style.width = "100%";
+      resultTitle.textContent = result.title;
+      resultDescription.textContent = result.description;
+    }
+
+    restartButton.addEventListener("click", () => {
+      currentQuestion = 0;
+      scores = {};
+      resultPanel.classList.add("hidden");
+      quizPanel.classList.remove("hidden");
+      renderQuestion();
+    });
+
+    renderQuestion();
+  </script>
 </Layout>
