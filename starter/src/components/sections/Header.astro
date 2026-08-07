@@ -150,37 +150,6 @@ const activeThemeName = themes.find((theme) => theme.id === defaultThemeId)?.nam
         <div class="relative z-10 w-full px-5 sm:hidden mt-3">
           <div class="w-full border-t border-dashed border-neutral-200 dark:border-neutral-700"></div>
         </div>
-
-        <!-- Theme Switcher (Mobile) -->
-        {showThemeSwitcher && (
-        <div class="relative z-10 w-full px-5 mt-3 sm:hidden">
-          <div class="mb-2 flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.14em] text-neutral-400 dark:text-neutral-500">
-            <Palette class="h-3.5 w-3.5" />
-            Theme
-          </div>
-          <div class="grid gap-2">
-            {themes.map((theme) => (
-              <button
-                type="button"
-                class="theme-option flex w-full items-center justify-between gap-3 rounded-lg border border-dashed border-primary/15 bg-bg-primary/60 px-3 py-2.5 text-left transition-all duration-200 hover:border-primary/35 hover:bg-primary/5 active:scale-[0.98] dark:border-neutral-700 dark:bg-bg-primary-dark/50 dark:hover:border-primary/40 dark:hover:bg-primary/10"
-                data-theme-option={theme.id}
-                aria-pressed={theme.id === defaultThemeId ? "true" : "false"}
-              >
-                <span class="flex min-w-0 items-center gap-2">
-                  <span class="flex h-5 w-8 overflow-hidden rounded-md border border-white/70 shadow-sm dark:border-white/10">
-                    {theme.swatches.slice(0, 3).map((color) => (
-                      <span class="h-full flex-1" style={`background:${color}`}></span>
-                    ))}
-                  </span>
-                  <span class="truncate text-sm font-medium text-neutral-700 dark:text-neutral-200">{theme.name}</span>
-                </span>
-                <Check class="theme-check hidden h-4 w-4 flex-none text-primary" />
-              </button>
-            ))}
-          </div>
-        </div>
-        )}
-
         <!-- CTA Button (Mobile) -->
         <div class="relative z-10 w-full px-5 mt-3 sm:hidden">
           <Button url="/crm-decision-guide" type="fill" target="_self" className="m-auto w-full justify-center ">
@@ -195,53 +164,6 @@ const activeThemeName = themes.find((theme) => theme.id === defaultThemeId)?.nam
         <Button url="/crm-decision-guide" target="_self" type="fill" className="md:flex mx-1">
           Start Guide
         </Button>
-
-        {showThemeSwitcher && (
-          <span class="separator-line hidden sm:inline-block bg-primary/25 mt-[20px] -translate-y-1/2 w-px h-[20px]"></span>
-        )}
-
-        <!-- Theme Switcher (Desktop) -->
-        {showThemeSwitcher && (
-        <div class="theme-switcher relative mx-1">
-          <button
-            type="button"
-            id="themeToggle"
-            class="theme-trigger relative flex h-9 items-center gap-2 rounded-full border-[0.5px] border-primary/20 bg-gradient-to-b from-white to-bg-primary-light px-2.5 text-sm font-medium text-neutral-700 transition-all duration-200 hover:shadow-md hover:scale-105 active:scale-95 dark:border-neutral-600 dark:from-neutral-800 dark:to-bg-secondary-dark dark:text-neutral-300"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            <Palette class="h-4 w-4 text-primary" />
-            <span id="activeThemeLabel" class="hidden whitespace-nowrap lg:inline">{activeThemeName}</span>
-            <ChevronDown class="h-3.5 w-3.5 text-neutral-400 transition-transform duration-200" />
-          </button>
-          <div
-            id="themePanel"
-            class="theme-panel invisible absolute right-0 top-full mt-2 max-h-[min(70vh,520px)] min-w-[260px] translate-y-[-4px] overflow-y-auto rounded-xl border border-dashed border-primary/20 bg-white/95 p-2 opacity-0 shadow-lg backdrop-blur-xl transition-all duration-200 dark:border-neutral-700 dark:bg-bg-secondary-dark/95"
-          >
-            {themes.map((theme) => (
-              <button
-                type="button"
-                class="theme-option flex w-full items-start justify-between gap-3 rounded-lg px-3 py-2.5 text-left transition-colors duration-150 hover:bg-primary/5 dark:hover:bg-primary/10"
-                data-theme-option={theme.id}
-                aria-pressed={theme.id === defaultThemeId ? "true" : "false"}
-              >
-                <span class="min-w-0">
-                  <span class="mb-1 flex items-center gap-2">
-                    <span class="flex h-5 w-9 overflow-hidden rounded-md border border-white/70 shadow-sm dark:border-white/10">
-                      {theme.swatches.slice(0, 3).map((color) => (
-                        <span class="h-full flex-1" style={`background:${color}`}></span>
-                      ))}
-                    </span>
-                    <span class="text-sm font-semibold text-neutral-800 dark:text-neutral-100">{theme.name}</span>
-                  </span>
-                  <span class="block text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">{theme.source}</span>
-                </span>
-                <Check class="theme-check mt-0.5 hidden h-4 w-4 flex-none text-primary" />
-              </button>
-            ))}
-          </div>
-        </div>
-        )}
 
         <!-- Dark Mode Toggle (Desktop) -->
         <div
