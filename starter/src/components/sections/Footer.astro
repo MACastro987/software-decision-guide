@@ -6,17 +6,17 @@ import { siteConfig } from "@/config/site.js";
 const currentYear = new Date().getFullYear();
 const templateVersion = "v1.0.0";
 const footerLinks = {
-	starter: [
-		{ name: "Home", url: "/" },
-		{ name: "Blog", url: "/blog" },
-		{ name: "DESIGN.md", url: "/design" },
-		{ name: "Elements", url: "/elements" },
-	],
-	resources: [
-		{ name: "RSS", url: "/rss.xml" },
-		{ name: "Source repository", url: siteConfig.social.github },
-		{ name: "MIT License", url: `${siteConfig.social.github}/blob/main/LICENSE` },
-	],
+  starter: [
+    { name: "Home", url: "/" },
+    { name: "CRM Guide", url: "/crm-decision-guide" },
+    { name: "Articles", url: "/blog" },
+    { name: "About", url: "/about" },
+    { name: "Contact", url: "/contact" },
+  ],
+  resources: [
+    { name: "Privacy Policy", url: "/privacy" },
+    { name: "Affiliate Disclosure", url: "/affiliate-disclosure" },
+  ],
 };
 ---
 
@@ -26,19 +26,19 @@ const footerLinks = {
 			<div class="max-w-sm">
 				<Logo />
 				<p class="mt-4 text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
-					A generic Astro 7 starter with Blog, DESIGN.md, Elements, Tailwind CSS v4, MDX, and a reusable theme system.
+					Software Decision Guide helps businesses choose CRM and business software through structured guides, practical criteria, and clear recommendation paths.
 				</p>
 			</div>
 
 			<div class="grid grid-cols-2 gap-8 md:gap-12">
 				<div>
-					<h4 class="mb-4 text-sm font-semibold text-neutral-800 dark:text-neutral-200">Starter</h4>
+					<h4 class="mb-4 text-sm font-semibold text-neutral-800 dark:text-neutral-200">Site</h4>
 					<ul class="space-y-3">
 						{footerLinks.starter.map((link) => <li><a href={link.url} class="text-sm text-neutral-500 transition-colors duration-200 hover:text-primary dark:text-neutral-400 dark:hover:text-primary-light">{link.name}</a></li>)}
 					</ul>
 				</div>
 				<div>
-					<h4 class="mb-4 text-sm font-semibold text-neutral-800 dark:text-neutral-200">Resources</h4>
+					<h4 class="mb-4 text-sm font-semibold text-neutral-800 dark:text-neutral-200">Legal</h4>
 					<ul class="space-y-3">
 						{footerLinks.resources.map((link) => <li><a href={link.url} class="text-sm text-neutral-500 transition-colors duration-200 hover:text-primary dark:text-neutral-400 dark:hover:text-primary-light">{link.name}</a></li>)}
 					</ul>
