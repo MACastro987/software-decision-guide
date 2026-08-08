@@ -1,33 +1,20 @@
 {
-	"name": "design-led-astro-starter",
-	"type": "module",
-	"version": "1.0.0",
-	"packageManager": "pnpm@9.14.2",
-	"description": "A clean, design-led Astro starter with Blog, DESIGN.md, Elements, Tailwind CSS v4, and MDX.",
+	"name": "software-decision-guide",
+	"version": "0.1.0",
+	"packageManager": "npm@11.6.2",
+	"description": "Structured CRM and business software decision guides for teams comparing software options.",
 	"keywords": [
-		"astro",
-		"astro-template",
-		"astro-starter",
-		"starter",
-		"design-system",
-		"website-theme",
-		"tailwindcss",
-		"tailwindcss-v4",
-		"mdx",
-		"blog",
-		"dark-mode",
-		"responsive",
-		"typescript"
+  		"crm",
+ 		"crm-selection",
+  		"crm-decision-guide",
+  		"business-software",
+  		"software-comparison",
+  		"marketing-attribution",
+  		"software-buying-guide",
+  		"mdx",
+  		"astro"
 	],
-	"author": "Template Maintainers",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/ricocc/ricoui-astro-starter.git"
-	},
-	"bugs": {
-		"url": "https://github.com/ricocc/ricoui-astro-starter/issues"
-	},
-	"homepage": "https://github.com/ricocc/ricoui-astro-starter#readme",
+	"author": "Software Decision Guide",
 	"license": "MIT",
 	"engines": {
 		"node": ">=22.12.0",
