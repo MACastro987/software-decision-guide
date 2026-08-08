@@ -2,105 +2,68 @@
 import Layout from "@/layouts/Layout.astro";
 import HeroSection from "@/components/home/HeroSection.astro";
 import SectionHeader from "@/components/elements/SectionHeader.astro";
-import BlogSection from "@/components/sections/BlogSection.astro";
-import Button from "@/components/ui/Button.astro";
-import BrowserFrame from "@/components/ui/BrowserFrame.astro";
-import { siteConfig } from "@/config/site";
 import {
-	ArrowRight,
-	BookOpen,
-	Brush,
-	FilePenLine,
-	FileText,
-	FolderOpen,
-	Layers,
-	LayoutTemplate,
-	Palette,
-	Rss,
-	Settings,
-	Sparkles,
+  BookOpen,
+  FileText,
+  Layers,
+  Palette,
 } from "@lucide/astro";
 
-const starterScope = [
-	{
-		icon: Palette,
-		title: "Answer quick questions",
-		desc: "Move through a short, mobile-friendly decision guide.",
-	},
-	{
-		icon: FileText,
-		title: "See your CRM path",
-		desc: "Get a recommended CRM direction based on your priorities.",
-	},
-	{
-		icon: BookOpen,
-		title: "Understand the tradeoffs",
-		desc: "See why speed, cost, ease of use, reporting, or customization changed the result.",
-	},
-	{
-		icon: Layers,
-		title: "Compare next steps",
-		desc: "Use the result to compare CRM options before talking to vendors.",
-	},
-];
-
-const fileMap = [
-	{ path: "src/pages/index.astro", note: "starter home" },
-	{ path: "src/pages/blog", note: "MDX blog routes" },
-	{ path: "src/pages/design.astro", note: "DESIGN.md preview" },
-	{ path: "src/pages/elements.astro", note: "theme components" },
-	{ path: "src/styles/global.css", note: "Tailwind v4 tokens" },
-	{ path: "src/config/site.js", note: "site metadata" },
-];
-
-const workflow = [
-	{
-		icon: Settings,
-		title: "Site metadata",
-		desc: "Edit src/config/site.js",
-	},
-	{
-		icon: Palette,
-		title: "Theme tokens",
-		desc: "Tune colors in global.css and themes.css",
-	},
-	{
-		icon: FilePenLine,
-		title: "Content posts",
-		desc: "Write MDX in src/content/post",
-	},
-	{
-		icon: LayoutTemplate,
-		title: "Page composition",
-		desc: "Build from the Elements reference",
-	},
+const guideSteps = [
+  {
+    icon: Palette,
+    title: "Answer quick questions",
+    desc: "Move through a short, mobile-friendly decision guide.",
+  },
+  {
+    icon: FileText,
+    title: "See your CRM path",
+    desc: "Get a recommended CRM direction based on your priorities.",
+  },
+  {
+    icon: BookOpen,
+    title: "Understand the tradeoffs",
+    desc: "See why speed, cost, ease of use, reporting, or customization changed the result.",
+  },
+  {
+    icon: Layers,
+    title: "Compare next steps",
+    desc: "Use the result to compare CRM options before talking to vendors.",
+  },
 ];
 ---
 
 <Layout
-	title="Design-led Astro Starter - Astro 7 template"
-	description="Choose business software with confidence."
-	keywords="astro starter, design system, tailwind css, mdx blog, website template"
+  title="Software Decision Guide"
+  description="Structured CRM and business software decision guides for teams comparing software options."
+  keywords="CRM selection, CRM decision guide, business software, software comparison, CRM tracking, marketing attribution"
 >
-	<HeroSection />
+  <HeroSection />
 
-	<section class="site-container py-16 md:py-24">
-		<SectionHeader
-			title="How the CRM guide works"
-			description="Answer a few structured questions, see your CRM decision path, and understand the tradeoffs behind the recommendation."
-		/>
-		<div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-			{starterScope.map((item) => (
-				<article
-					class="rounded-xl border border-primary/10 bg-bg-secondary p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(var(--color-primary-rgb),0.08)] dark:border-neutral-700 dark:bg-bg-secondary-dark"
-				>
-					<div class="mb-4 grid h-10 w-10 place-items-center rounded-lg bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-light">
-						<item.icon class="h-5 w-5" />
-					</div>
-					<h3 class="mb-2 text-lg font-semibold text-neutral-800 dark:text-neutral-100">{item.title}</h3>
-					<p class="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">{item.desc}</p>
-				</article>
-			))}
-		</div>
-	</section>
+  <section class="site-container py-16 md:py-24">
+    <SectionHeader
+      title="How the CRM guide works"
+      description="Answer a few structured questions, see your CRM decision path, and understand the tradeoffs behind the recommendation."
+    />
+
+    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {guideSteps.map((item) => (
+        <article
+          class="rounded-xl border border-primary/10 bg-bg-secondary p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(var(--color-primary-rgb),0.08)] dark:border-neutral-700 dark:bg-bg-secondary-dark"
+        >
+          <div class="mb-4 grid h-10 w-10 place-items-center rounded-lg bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-light">
+            <item.icon class="h-5 w-5" />
+          </div>
+
+          <h3 class="mb-2 text-lg font-semibold text-neutral-800 dark:text-neutral-100">
+            {item.title}
+          </h3>
+
+          <p class="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+            {item.desc}
+          </p>
+        </article>
+      ))}
+    </div>
+  </section>
 </Layout>
