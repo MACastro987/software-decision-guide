@@ -1,0 +1,32 @@
+---
+title: "How to Build Custom & Calculated Metrics in GA4 for Funnel Rates"
+description: "Learn how to turn GA4 events into custom metrics, calculated metrics, and funnel rates for forms, quizzes, schedulers, and embedded tools."
+publishDate: 2026-08-10
+category: "Measurement"
+---
+
+## Coming soon
+
+This guide will explain how to turn behavioral events into reusable GA4 funnel metrics.
+
+The core pattern:
+
+- behavioral event
+- numeric event parameter = 1
+- GA4 custom metric
+- calculated metric
+- funnel rate
+
+Example rates:
+
+- Form start rate = starts / impressions
+- Form completion rate = completions / starts
+- Impression-to-completion rate = completions / impressions
+
+This article will connect implementation guides like HubSpot form tracking to the downstream GA4 metrics and reporting setup.
+
+## Implementation Example: HubSpot Forms
+
+For a concrete implementation example, read: [track HubSpot form starts and submissions with Google Tag Manager](/articles/hubspot-form-tracking-google-tag-manager/).
+
+That guide shows how HubSpot form behavior can be captured first, before those events are turned into GA4 custom metrics and calculated rates.
