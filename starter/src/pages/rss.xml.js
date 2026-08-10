@@ -8,7 +8,7 @@ export async function GET(context) {
     description: 'CRM selection, software decision guides, and practical implementation notes.',
     site: context.site,
     items: blog.map((post) => {
-      const link = `/blog/${post.id}/`;
+      const link = `/articles/${post.id}/`;
       return {
         title: post.data.title,
         pubDate: post.data.publishDate,

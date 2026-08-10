@@ -15,7 +15,7 @@ const {
     enable: false,
     currentPage: 1
   },
-  postsPerPage = 3
+  postsPerPage = 6
 } = Astro.props;
 
 // 获取博客文章集合
@@ -51,7 +51,7 @@ if (pagination.enable) {
 const postsWithLinks = posts.map(post => {
   // Content Layer 的 entry.id 是条目的唯一标识符
   // 直接使用 entry.id 生成 URL，对于 [...slug] 路由，id 已经是正确的路径
-  const link = `/blog/${post.id}`;
+  const link = `/articles/${post.id}`;
   return {
     ...post,
     data: {
@@ -66,7 +66,7 @@ const featuredPostWithLink = featuredPost ? {
   ...featuredPost,
   data: {
     ...featuredPost.data,
-    link: `/blog/${featuredPost.id}`
+    link: `/articles/${featuredPost.id}`
   }
 } : null;
 ---
@@ -121,7 +121,7 @@ const featuredPostWithLink = featuredPost ? {
   {/* "View All Articles" 按钮 - 仅在非列表页且启用时显示 */}
   {!listPage && showViewAllButton && (
     <div class="flex justify-center mt-12 mb-12">
-      <Button url="/blog" className="w-full max-w-60">View All Articles</Button>
+      <Button url="/articles" className="w-full max-w-60">View All Articles</Button>
     </div>
   )}
 </section>
