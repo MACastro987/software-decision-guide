@@ -20,8 +20,8 @@ import Layout from "@/layouts/Layout.astro";
         Have a question about CRM selection, software decision guides, or measurement implementation? Send a note below.
       </p>
 
-      <div class="rounded-2xl border border-primary/15 bg-bg-secondary/70 p-6 shadow-sm">
-        <script src="https://js-na2.hsforms.net/forms/embed/247021690.js" defer></script>
+      <div class="hubspot-form-card rounded-2xl border border-primary/15 bg-white p-6 shadow-sm">
+        <script is:inline src="https://js-na2.hsforms.net/forms/embed/247021690.js" defer></script>
         <div
           class="hs-form-frame"
           data-region="na2"
@@ -32,3 +32,23 @@ import Layout from "@/layouts/Layout.astro";
     </section>
   </main>
 </Layout>
+
+<style is:global>
+  .hubspot-form-card,
+  .hubspot-form-card * {
+    color: #1f2937;
+  }
+
+  .hubspot-form-card input,
+  .hubspot-form-card textarea,
+  .hubspot-form-card select {
+    color: #111827;
+    background-color: #ffffff;
+  }
+
+  .hubspot-form-card label,
+  .hubspot-form-card p,
+  .hubspot-form-card span {
+    color: #374151;
+  }
+</style>
