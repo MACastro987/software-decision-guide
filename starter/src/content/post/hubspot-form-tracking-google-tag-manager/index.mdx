@@ -1,9 +1,15 @@
 ---
 title: "How to Track HubSpot Forms with Google Tag Manager"
-description: "Track HubSpot form impressions, starts, and submissions with GTM, GA4, and a reusable measurement pattern."
+description: "Track HubSpot form impressions and successful submissions with GTM, GA4, and a reusable measurement pattern."
 publishDate: 2026-08-09
 category: "Measurement"
 ---
+
+# How to Track HubSpot Forms with Google Tag Manager
+
+This guide shows how to track HubSpot form impressions and successful submissions with Google Tag Manager and GA4.
+
+The lightweight v1 template listens for HubSpot form events, pushes clean source-specific events into the dataLayer, and maps those events to GA4 reporting events.
 
 ## Download the GTM template
 
@@ -26,11 +32,59 @@ This template includes:
 - GA4 mapping to `generate_lead`
 - A `form_id` event parameter
 
-The listener does not collect field values, names, email addresses, company names, messages, or other PII.
+## What this setup tracks
 
+This v1 template tracks two HubSpot form events:
 
-## Turn These Events Into GA4 Funnel Rates
+- `hubspotFormImpression` when the HubSpot form is ready or detected on the page
+- `hubspotFormComplete` after a successful HubSpot form submission
 
-After you capture HubSpot form impressions, starts, and completions, the next step is to turn those events into reusable GA4 custom metrics and calculated rates.
+GTM maps those source-specific dataLayer events to cleaner GA4 reporting events:
+
+- `hubspotFormImpression` → `form_impression`
+- `hubspotFormComplete` → `generate_lead`
+- `hubspotFormId` → `form_id`
+
+## What this setup does not track
+
+This template does not collect form field values, names, email addresses, company names, messages, phone numbers, or other PII.
+
+It also does not include a `form_start` event in v1. A true form-start event should be defined carefully, tested against the specific HubSpot embed type, and deduplicated so one visitor cannot create multiple starts from the same form instance.
+
+## Why this template separates dataLayer events from GA4 events
+
+The dataLayer events are source-specific because they describe what happened in HubSpot:
+
+- `hubspotFormImpression`
+- `hubspotFormComplete`
+
+The GA4 events are reporting-specific because they describe the business behavior you want to analyze:
+
+- `form_impression`
+- `generate_lead`
+
+This separation keeps the implementation clear. HubSpot-specific behavior stays in the dataLayer, while GA4 receives normalized events that can be reused across future form, scheduler, chat, or quiz tracking.
+
+## How to validate the setup
+
+After importing the template, test the setup in GTM Preview before publishing.
+
+Expected dataLayer events:
+
+- `hubspotFormImpression` when the HubSpot form loads
+- `hubspotFormComplete` after a successful submission
+
+Expected GA4 events:
+
+- `form_impression`
+- `generate_lead`
+
+In GA4 DebugView, confirm that the events include the `form_id` parameter.
+
+Do not publish the container until the events appear correctly in both GTM Preview and GA4 DebugView.
+
+## Turn these events into GA4 funnel rates
+
+After you capture HubSpot form impressions and successful submissions, the next step is to turn those events into reusable GA4 custom metrics and calculated rates.
 
 Read the connected guide: [How to Build Custom & Calculated Metrics in GA4 for Funnel Rates](/articles/ga4-custom-calculated-metrics-funnel-rates/).
