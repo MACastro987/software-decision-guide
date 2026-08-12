@@ -5,17 +5,23 @@ publishDate: 2026-08-09
 category: "Measurement"
 ---
 
-## Coming soon
+## Download the GTM template
 
-This guide will show how to track HubSpot form impressions, form starts, and successful submissions with Google Tag Manager.
+Use this downloadable GTM container template to track HubSpot form impressions and successful submissions.
 
-It will include:
+[Download the HubSpot form tracking GTM template](/downloads/hubspot-form-tracking-gtm-template.json)
 
-- a HubSpot form listener
-- dataLayer events
-- GTM custom event triggers
-- GA4 event recommendations
-- a sanitized downloadable GTM container export
+This template includes:
+
+- A lightweight HubSpot form listener
+- A `hubspotFormImpression` dataLayer event
+- A `hubspotFormComplete` dataLayer event
+- A `hubspotFormId` dataLayer variable
+- GA4 mapping to `form_impression`
+- GA4 mapping to `generate_lead`
+- A `form_id` event parameter
+
+The listener does not collect field values, names, email addresses, company names, messages, or other PII.
 
 
 ## Turn These Events Into GA4 Funnel Rates
