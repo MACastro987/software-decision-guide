@@ -104,33 +104,59 @@ import Layout from "@/layouts/Layout.astro";
   <style is:global>
     @media print {
       @page {
+        size: letter;
         margin: 0.35in;
       }
 
+      html,
       body {
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
         background: #ffffff !important;
         color: #111111 !important;
+        overflow: visible !important;
       }
 
-      body * {
+      body > * {
+        display: none !important;
+      }
+
+      body > main {
+        display: block !important;
+      }
+
+      main,
+      main > section {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      main * {
         visibility: hidden !important;
       }
 
+      #resultPanel,
       #recommendationReport,
       #recommendationReport * {
         visibility: visible !important;
       }
 
       #recommendationReport {
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
+        position: static !important;
         width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
         border: 0 !important;
         box-shadow: none !important;
         background: #ffffff !important;
         color: #111111 !important;
-        padding: 0 !important;
+        font-size: 12px !important;
+        line-height: 1.3 !important;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
       }
 
       #recommendationReport * {
@@ -138,46 +164,43 @@ import Layout from "@/layouts/Layout.astro";
         color: #111111 !important;
       }
 
-      #recommendationReport {
-        font-size: 12px !important;
-        line-height: 1.35 !important;
-      }
-
       #recommendationReport h2 {
-        font-size: 26px !important;
-        margin-bottom: 12px !important;
+        font-size: 24px !important;
+        margin-bottom: 10px !important;
       }
 
       #recommendationReport p {
-        margin-bottom: 8px !important;
+        margin-bottom: 7px !important;
       }
 
       #answerSummaryList {
-        gap: 6px !important;
+        gap: 5px !important;
       }
 
       #answerSummaryList > div {
-        padding: 8px !important;
+        padding: 7px !important;
         break-inside: avoid !important;
       }
 
       #nextStepList {
-        gap: 4px !important;
+        gap: 3px !important;
       }
 
       #nextStepList li {
-        line-height: 1.3 !important;
+        line-height: 1.25 !important;
         break-inside: avoid !important;
       }
 
       #downloadActions,
-      #restartButton {
+      #restartButton,
+      #quizPanel {
         display: none !important;
       }
 
       #printFooter {
         display: block !important;
         visibility: visible !important;
+        margin-top: 10px !important;
       }
     }
   </style>
