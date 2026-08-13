@@ -47,7 +47,7 @@ const recommendationReasons = [
       </div>
     </div>
 
-    <div class="relative">
+    <div class="relative transition-transform duration-300 hover:-translate-y-1">
       <BrowserFrame url="softwaredecisionguide.com">
         <div class="min-h-[360px] p-5 md:p-6">
           <div class="mb-6 flex items-center justify-between gap-4">
@@ -135,6 +135,12 @@ const recommendationReasons = [
           </div>
         </div>
       </BrowserFrame>
+
+      <a
+        href="/crm-decision-guide"
+        class="absolute inset-0 z-30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-4 focus:ring-offset-bg-primary"
+        aria-label="Start the CRM Decision Guide"
+      ></a>
     </div>
   </div>
 </section>
