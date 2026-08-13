@@ -1,298 +1,300 @@
 {
-    "exportFormatVersion": 2,
-    "exportTime": "2026-08-11 00:00:00",
-    "containerVersion": {
-        "path": "accounts/0000000000/containers/0000000000/versions/0",
+  "exportFormatVersion": 2,
+  "exportTime": "2026-08-13 00:00:00",
+  "containerVersion": {
+    "path": "accounts/0000000000/containers/0000000000/versions/0",
+    "accountId": "0000000000",
+    "containerId": "0000000000",
+    "containerVersionId": "0",
+    "container": {
+      "path": "accounts/0000000000/containers/0000000000",
+      "accountId": "0000000000",
+      "containerId": "0000000000",
+      "name": "HubSpot Form Tracking Template",
+      "publicId": "GTM-XXXXXXX",
+      "usageContext": [
+        "WEB"
+      ],
+      "fingerprint": "0",
+      "tagManagerUrl": "https://tagmanager.google.com/",
+      "features": {
+        "supportUserPermissions": true,
+        "supportEnvironments": true,
+        "supportWorkspaces": true,
+        "supportGtagConfigs": false,
+        "supportBuiltInVariables": true,
+        "supportClients": false,
+        "supportFolders": true,
+        "supportTags": true,
+        "supportTemplates": true,
+        "supportTriggers": true,
+        "supportVariables": true,
+        "supportVersions": true,
+        "supportZones": true,
+        "supportTransformations": false
+      },
+      "tagIds": [
+        "GTM-XXXXXXX"
+      ]
+    },
+    "tag": [
+      {
         "accountId": "0000000000",
         "containerId": "0000000000",
-        "containerVersionId": "0",
-        "container": {
-            "path": "accounts/0000000000/containers/0000000000",
-            "accountId": "0000000000",
-            "containerId": "0000000000",
-            "name": "HubSpot Form Tracking Template",
-            "publicId": "GTM-XXXXXXX",
-            "usageContext": [
-                "WEB"
-            ],
-            "fingerprint": "0",
-            "features": {
-                "supportUserPermissions": true,
-                "supportEnvironments": true,
-                "supportWorkspaces": true,
-                "supportGtagConfigs": false,
-                "supportBuiltInVariables": true,
-                "supportClients": false,
-                "supportFolders": true,
-                "supportTags": true,
-                "supportTemplates": true,
-                "supportTriggers": true,
-                "supportVariables": true,
-                "supportVersions": true,
-                "supportZones": true,
-                "supportTransformations": false
-            },
-            "tagIds": [
-                "GTM-XXXXXXX"
-            ]
+        "tagId": "1",
+        "name": "HubSpot Form Listener",
+        "type": "html",
+        "notes": "HubSpot form listener. Pushes hubspotFormImpression and hubspotFormComplete to dataLayer with hubspotFormId only. No field values or PII. GTM maps these source events to GA4 form_impression and generate_lead.",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "html",
+            "value": "<script>\n(function () {\n  window.dataLayer = window.dataLayer || [];\n\n  var seen = {};\n\n  function getFormId(event) {\n    var detail = event && event.detail ? event.detail : {};\n    var frame;\n\n    if (detail.formId || detail.id) {\n      return detail.formId || detail.id;\n    }\n\n    frame = document.querySelector(\".hs-form-frame[data-form-id]\");\n    return frame ? frame.getAttribute(\"data-form-id\") : \"\";\n  }\n\n  function pushEvent(eventName, event) {\n    var formId = getFormId(event);\n    var key = eventName + \"|\" + formId;\n\n    if (!formId || seen[key]) {\n      return;\n    }\n\n    seen[key] = true;\n\n    window.dataLayer.push({\n      event: eventName,\n      hubspotFormId: formId\n    });\n  }\n\n  function pushImpressionFallback(attemptsLeft) {\n    if (document.querySelector(\".hs-form-frame[data-form-id]\")) {\n      pushEvent(\"hubspotFormImpression\");\n      return;\n    }\n\n    if (attemptsLeft > 0) {\n      setTimeout(function () {\n        pushImpressionFallback(attemptsLeft - 1);\n      }, 500);\n    }\n  }\n\n  window.addEventListener(\"hs-form-event:on-ready\", function (event) {\n    pushEvent(\"hubspotFormImpression\", event);\n  });\n\n  window.addEventListener(\"hs-form-event:on-submission:success\", function (event) {\n    pushEvent(\"hubspotFormComplete\", event);\n  });\n\n  pushImpressionFallback(10);\n})();\n</script>"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "supportDocumentWrite",
+            "value": "false"
+          }
+        ],
+        "fingerprint": "0",
+        "firingTriggerId": [
+          "2147479573"
+        ],
+        "parentFolderId": "30",
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "monitoringMetadata": {
+          "type": "MAP"
         },
-        "tag": [
-            {
-                "accountId": "0000000000",
-                "containerId": "0000000000",
-                "tagId": "9",
-                "name": "HubSpot Form Listener",
-                "type": "html",
-                "notes": "HubSpot form listener. Pushes hubspotFormImpression and hubspotFormComplete to dataLayer with hubspotFormId only. No field values or PII. GTM maps these source events to GA4 form_impression and generate_lead.",
-                "parameter": [
-                    {
-                        "type": "TEMPLATE",
-                        "key": "html",
-                        "value": "<script>\n(function () {\n  window.dataLayer = window.dataLayer || [];\n\n  var seen = {};\n\n  function getFormId(event) {\n    var detail = event && event.detail ? event.detail : {};\n    var frame;\n\n    if (detail.formId || detail.id) {\n      return detail.formId || detail.id;\n    }\n\n    frame = document.querySelector(\".hs-form-frame[data-form-id]\");\n    return frame ? frame.getAttribute(\"data-form-id\") : \"\";\n  }\n\n  function pushEvent(eventName, event) {\n    var formId = getFormId(event);\n    var key = eventName + \"|\" + formId;\n\n    if (!formId || seen[key]) {\n      return;\n    }\n\n    seen[key] = true;\n\n    window.dataLayer.push({\n      event: eventName,\n      hubspotFormId: formId\n    });\n  }\n\n  function pushImpressionFallback() {\n    pushEvent(\"hubspotFormImpression\");\n  }\n\n  window.addEventListener(\"hs-form-event:on-ready\", function (event) {\n    pushEvent(\"hubspotFormImpression\", event);\n  });\n\n  window.addEventListener(\"hs-form-event:on-submission:success\", function (event) {\n    pushEvent(\"hubspotFormComplete\", event);\n  });\n\n  window.addEventListener(\"load\", function () {\n    setTimeout(pushImpressionFallback, 500);\n  });\n})();\n</script>"
-                    },
-                    {
-                        "type": "BOOLEAN",
-                        "key": "supportDocumentWrite",
-                        "value": "false"
-                    }
-                ],
-                "fingerprint": "0",
-                "firingTriggerId": [
-                    "2147479573"
-                ],
-                "parentFolderId": "18",
-                "tagFiringOption": "ONCE_PER_EVENT",
-                "monitoringMetadata": {
-                    "type": "MAP"
-                },
-                "consentSettings": {
-                    "consentStatus": "NOT_SET"
-                }
-            },
-            {
-                "accountId": "0000000000",
-                "containerId": "0000000000",
-                "tagId": "12",
-                "name": "GA Form Impression",
-                "type": "gaawe",
-                "parameter": [
-                    {
-                        "type": "BOOLEAN",
-                        "key": "sendEcommerceData",
-                        "value": "false"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "eventName",
-                        "value": "form_impression"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "measurementIdOverride",
-                        "value": "{{GA4 Measurement ID}}"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "eventSettingsVariable",
-                        "value": "{{HubSpot Forms}}"
-                    }
-                ],
-                "fingerprint": "0",
-                "firingTriggerId": [
-                    "11"
-                ],
-                "parentFolderId": "18",
-                "tagFiringOption": "ONCE_PER_EVENT",
-                "monitoringMetadata": {
-                    "type": "MAP"
-                },
-                "consentSettings": {
-                    "consentStatus": "NOT_SET"
-                }
-            },
-            {
-                "accountId": "0000000000",
-                "containerId": "0000000000",
-                "tagId": "14",
-                "name": "GA Generate Lead",
-                "type": "gaawe",
-                "parameter": [
-                    {
-                        "type": "BOOLEAN",
-                        "key": "sendEcommerceData",
-                        "value": "false"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "eventName",
-                        "value": "generate_lead"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "measurementIdOverride",
-                        "value": "{{GA4 Measurement ID}}"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "eventSettingsVariable",
-                        "value": "{{HubSpot Forms}}"
-                    }
-                ],
-                "fingerprint": "0",
-                "firingTriggerId": [
-                    "13"
-                ],
-                "parentFolderId": "18",
-                "tagFiringOption": "ONCE_PER_EVENT",
-                "monitoringMetadata": {
-                    "type": "MAP"
-                },
-                "consentSettings": {
-                    "consentStatus": "NOT_SET"
-                }
-            }
+        "consentSettings": {
+          "consentStatus": "NOT_SET"
+        }
+      },
+      {
+        "accountId": "0000000000",
+        "containerId": "0000000000",
+        "tagId": "2",
+        "name": "GA Form Impression",
+        "type": "gaawe",
+        "parameter": [
+          {
+            "type": "BOOLEAN",
+            "key": "sendEcommerceData",
+            "value": "false"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "eventName",
+            "value": "form_impression"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "measurementIdOverride",
+            "value": "{{GA4 Measurement ID}}"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "eventSettingsVariable",
+            "value": "{{HubSpot Forms}}"
+          }
         ],
-        "trigger": [
-            {
-                "accountId": "0000000000",
-                "containerId": "0000000000",
-                "triggerId": "11",
-                "name": "HubSpot Form Impression",
-                "type": "CUSTOM_EVENT",
-                "customEventFilter": [
-                    {
-                        "type": "EQUALS",
-                        "parameter": [
-                            {
-                                "type": "TEMPLATE",
-                                "key": "arg0",
-                                "value": "{{_event}}"
-                            },
-                            {
-                                "type": "TEMPLATE",
-                                "key": "arg1",
-                                "value": "hubspotFormImpression"
-                            }
-                        ]
-                    }
-                ],
-                "fingerprint": "0",
-                "parentFolderId": "18"
-            },
-            {
-                "accountId": "0000000000",
-                "containerId": "0000000000",
-                "triggerId": "13",
-                "name": "HubSpot Form Complete",
-                "type": "CUSTOM_EVENT",
-                "customEventFilter": [
-                    {
-                        "type": "EQUALS",
-                        "parameter": [
-                            {
-                                "type": "TEMPLATE",
-                                "key": "arg0",
-                                "value": "{{_event}}"
-                            },
-                            {
-                                "type": "TEMPLATE",
-                                "key": "arg1",
-                                "value": "hubspotFormComplete"
-                            }
-                        ]
-                    }
-                ],
-                "fingerprint": "0",
-                "parentFolderId": "18"
-            }
+        "fingerprint": "0",
+        "firingTriggerId": [
+          "10"
         ],
-        "variable": [
-            {
-                "accountId": "0000000000",
-                "containerId": "0000000000",
-                "variableId": "20",
-                "name": "GA4 Measurement ID",
-                "type": "c",
-                "parameter": [
-                    {
-                        "type": "TEMPLATE",
-                        "key": "value",
-                        "value": "G-XXXXXXXXXX"
-                    }
-                ],
-                "fingerprint": "0",
-                "parentFolderId": "18",
-                "formatValue": {}
-            },
-            {
-                "accountId": "0000000000",
-                "containerId": "0000000000",
-                "variableId": "16",
-                "name": "HubSpot Form ID",
-                "type": "v",
-                "parameter": [
-                    {
-                        "type": "INTEGER",
-                        "key": "dataLayerVersion",
-                        "value": "2"
-                    },
-                    {
-                        "type": "BOOLEAN",
-                        "key": "setDefaultValue",
-                        "value": "false"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "name",
-                        "value": "hubspotFormId"
-                    }
-                ],
-                "fingerprint": "0",
-                "parentFolderId": "18",
-                "formatValue": {}
-            },
-            {
-                "accountId": "0000000000",
-                "containerId": "0000000000",
-                "variableId": "17",
-                "name": "HubSpot Forms",
-                "type": "gtes",
-                "parameter": [
-                    {
-                        "type": "LIST",
-                        "key": "eventSettingsTable",
-                        "list": [
-                            {
-                                "type": "MAP",
-                                "map": [
-                                    {
-                                        "type": "TEMPLATE",
-                                        "key": "parameter",
-                                        "value": "form_id"
-                                    },
-                                    {
-                                        "type": "TEMPLATE",
-                                        "key": "parameterValue",
-                                        "value": "{{HubSpot Form ID}}"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ],
-                "fingerprint": "0",
-                "parentFolderId": "18"
-            }
+        "parentFolderId": "30",
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "monitoringMetadata": {
+          "type": "MAP"
+        },
+        "consentSettings": {
+          "consentStatus": "NOT_SET"
+        }
+      },
+      {
+        "accountId": "0000000000",
+        "containerId": "0000000000",
+        "tagId": "3",
+        "name": "GA Generate Lead",
+        "type": "gaawe",
+        "parameter": [
+          {
+            "type": "BOOLEAN",
+            "key": "sendEcommerceData",
+            "value": "false"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "eventName",
+            "value": "generate_lead"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "measurementIdOverride",
+            "value": "{{GA4 Measurement ID}}"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "eventSettingsVariable",
+            "value": "{{HubSpot Forms}}"
+          }
         ],
-        "folder": [
-            {
-                "accountId": "0000000000",
-                "containerId": "0000000000",
-                "folderId": "18",
-                "name": "HubSpot",
-                "fingerprint": "0"
-            }
+        "fingerprint": "0",
+        "firingTriggerId": [
+          "11"
         ],
+        "parentFolderId": "30",
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "monitoringMetadata": {
+          "type": "MAP"
+        },
+        "consentSettings": {
+          "consentStatus": "NOT_SET"
+        }
+      }
+    ],
+    "trigger": [
+      {
+        "accountId": "0000000000",
+        "containerId": "0000000000",
+        "triggerId": "10",
+        "name": "HubSpot Form Impression",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "hubspotFormImpression"
+              }
+            ]
+          }
+        ],
+        "fingerprint": "0",
+        "parentFolderId": "30"
+      },
+      {
+        "accountId": "0000000000",
+        "containerId": "0000000000",
+        "triggerId": "11",
+        "name": "HubSpot Form Complete",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "hubspotFormComplete"
+              }
+            ]
+          }
+        ],
+        "fingerprint": "0",
+        "parentFolderId": "30"
+      }
+    ],
+    "variable": [
+      {
+        "accountId": "0000000000",
+        "containerId": "0000000000",
+        "variableId": "20",
+        "name": "HubSpot Form ID",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "false"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "hubspotFormId"
+          }
+        ],
+        "fingerprint": "0",
+        "parentFolderId": "30",
+        "formatValue": {}
+      },
+      {
+        "accountId": "0000000000",
+        "containerId": "0000000000",
+        "variableId": "21",
+        "name": "HubSpot Forms",
+        "type": "gtes",
+        "parameter": [
+          {
+            "type": "LIST",
+            "key": "eventSettingsTable",
+            "list": [
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameter",
+                    "value": "form_id"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameterValue",
+                    "value": "{{HubSpot Form ID}}"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "fingerprint": "0",
+        "parentFolderId": "30"
+      },
+      {
+        "accountId": "0000000000",
+        "containerId": "0000000000",
+        "variableId": "22",
+        "name": "GA4 Measurement ID",
+        "type": "c",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "value",
+            "value": "G-XXXXXXXXXX"
+          }
+        ],
+        "fingerprint": "0",
+        "parentFolderId": "30",
+        "formatValue": {}
+      }
+    ],
+    "folder": [
+      {
+        "accountId": "0000000000",
+        "containerId": "0000000000",
+        "folderId": "30",
+        "name": "HubSpot",
         "fingerprint": "0"
-    }
+      }
+    ],
+    "fingerprint": "0",
+    "tagManagerUrl": "https://tagmanager.google.com/"
+  }
 }
