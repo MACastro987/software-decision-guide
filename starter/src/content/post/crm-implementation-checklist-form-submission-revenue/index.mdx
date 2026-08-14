@@ -1,0 +1,169 @@
+---
+title: "CRM Implementation Checklist: Track Leads From Form Submission to Revenue"
+description: "A practical CRM implementation checklist for capturing form submissions, preserving source data, managing lifecycle stages, and connecting leads to revenue."
+publishDate: 2026-08-14
+category: "CRM"
+---
+
+# CRM Implementation Checklist: Track Leads From Form Submission to Revenue
+
+A CRM implementation should do more than store contacts.
+
+For marketing and sales teams, the real goal is to track the path from form submission to qualified lead, opportunity, and revenue.
+
+Use this checklist before launching or replacing a CRM.
+
+## 1. Define the lead journey
+
+Map the basic path:
+
+1. Visitor lands on page
+2. Visitor submits form
+3. Contact is created
+4. Lead source is preserved
+5. Sales follows up
+6. Lead becomes qualified
+7. Opportunity is created
+8. Revenue is won or lost
+
+If the journey is unclear, reporting will be unclear too.
+
+## 2. Decide which forms matter
+
+List the forms that create meaningful sales or marketing signals.
+
+Examples:
+
+- Contact form
+- Demo request
+- Consultation request
+- Pricing request
+- Download form
+- Newsletter form
+- Webinar form
+
+Not every form needs the same reporting weight. A demo request usually matters more than a newsletter signup.
+
+## 3. Capture source data
+
+Before launch, decide which fields need to be captured.
+
+Useful fields include:
+
+- Original source
+- Source / medium
+- Campaign
+- Landing page
+- Form name or form ID
+- Conversion page
+- UTM parameters
+- Referrer
+- Conversion date
+
+This data is much easier to preserve at the moment of form submission than to recreate later.
+
+## 4. Use hidden fields carefully
+
+Hidden fields can capture useful tracking values without asking the visitor to type them manually.
+
+Common examples:
+
+- utm_source
+- utm_medium
+- utm_campaign
+- landing_page
+- form_id
+- conversion_page
+
+Avoid collecting unnecessary personal information. Track what helps the business understand lead quality and source performance.
+
+## 5. Connect the CRM to analytics
+
+The CRM does not need to replace GA4 or Google Tag Manager.
+
+A strong setup lets each tool do its job:
+
+- GTM tracks website behavior
+- GA4 reports website events and funnel behavior
+- CRM stores contacts, lifecycle stages, pipeline, and revenue outcomes
+
+For HubSpot forms, see the guide on [tracking HubSpot forms with Google Tag Manager](/articles/hubspot-form-tracking-google-tag-manager/).
+
+## 6. Define lifecycle stages
+
+Lifecycle stages help the team separate raw leads from better opportunities.
+
+A simple model might include:
+
+- Lead
+- Marketing qualified lead
+- Sales qualified lead
+- Opportunity
+- Customer
+
+The exact names matter less than consistent usage.
+
+## 7. Assign ownership and follow-up
+
+A CRM implementation fails if leads enter the system but no one owns follow-up.
+
+Define:
+
+- Who receives each form submission
+- How fast follow-up should happen
+- When a lead becomes qualified
+- When a deal should be created
+- What happens if sales cannot reach the lead
+
+The CRM should support the process, not replace it.
+
+## 8. Build reports before launch
+
+Decide which reports matter before the CRM goes live.
+
+Useful starter reports include:
+
+- Leads by source
+- Leads by form
+- Qualified leads by source
+- Opportunities by campaign
+- Revenue by source
+- Form submission to opportunity rate
+- Lead response time
+
+If leadership will not use a report, do not overbuild it.
+
+## 9. Test before publishing
+
+Before launch, submit test leads from important forms.
+
+Confirm:
+
+- Contact records are created
+- Source data is preserved
+- Hidden fields work
+- Sales receives the lead
+- Lifecycle stage rules work
+- GA4 events fire
+- CRM reports show the test data
+
+Testing one form is not enough. Test the important conversion paths.
+
+## 10. Keep the first version simple
+
+The first CRM implementation should be useful, not perfect.
+
+Start with the fields, forms, lifecycle stages, and reports that support real decisions. Add complexity only when the team needs it.
+
+## Bottom line
+
+A good CRM implementation connects form submissions to source data, follow-up, pipeline, and revenue.
+
+The goal is not just to collect more leads. The goal is to understand which leads are worth pursuing and which marketing activities create real sales opportunities.
+
+## Related guides
+
+- [Best CRM for Marketing Attribution and Form Tracking](/articles/best-crm-marketing-attribution-form-tracking/)
+- [HubSpot CRM Review for Marketing Attribution and Form Tracking](/articles/hubspot-crm-review-marketing-attribution-form-tracking/)
+- [How to Track HubSpot Forms with Google Tag Manager](/articles/hubspot-form-tracking-google-tag-manager/)
+- [How to Choose a CRM](/articles/how-to-choose-a-crm/)
