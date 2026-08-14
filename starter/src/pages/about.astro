@@ -2,14 +2,53 @@
 import Layout from "@/layouts/Layout.astro";
 ---
 
-<Layout title="About | Software Decision Guide">
+<Layout
+  title="About | Software Decision Guide"
+  description="Software Decision Guide helps teams choose CRM and business software with practical buying criteria, implementation guidance, and attribution-aware recommendations."
+>
   <main class="site-container py-32">
-    <h1 class="mb-6 max-w-3xl text-5xl font-brand text-primary">
-      About Software Decision Guide
-    </h1>
+    <section class="mx-auto max-w-3xl">
+      <p class="mb-4 text-sm font-semibold uppercase tracking-wide text-primary">
+        About
+      </p>
 
-    <p class="max-w-2xl text-lg leading-relaxed text-neutral-600 dark:text-neutral-300">
-      Software Decision Guide helps businesses choose CRM and business software through structured decision guides, practical criteria, and implementation-aware recommendations.
-    </p>
+      <h1 class="mb-6 text-5xl font-brand text-primary">
+        Practical software guidance for teams that care about implementation.
+      </h1>
+
+      <div class="space-y-6 text-lg leading-relaxed text-neutral-600 dark:text-neutral-300">
+        <p>
+          Software Decision Guide helps businesses choose CRM and business software through structured decision guides, practical criteria, and implementation-aware recommendations.
+        </p>
+
+        <p>
+          The site is built for teams that do not just want a feature list. A good software decision should consider adoption, setup effort, reporting needs, form tracking, lifecycle stages, attribution, and the day-to-day process the tool needs to support.
+        </p>
+
+        <p>
+          The current focus is CRM selection, especially for teams comparing tools like HubSpot, Pipedrive, and other platforms where marketing, sales, forms, and revenue reporting need to connect.
+        </p>
+
+        <p>
+          Some articles may include affiliate links or sponsored recommendations in the future. When that happens, those relationships will be clearly labeled, and recommendations will still be based on stated needs, decision criteria, and product fit.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-4 sm:grid-cols-2">
+        <a
+          href="/crm-decision-guide/"
+          class="rounded-xl bg-primary px-5 py-4 text-center font-medium text-white transition hover:opacity-90"
+        >
+          Start the CRM guide
+        </a>
+
+        <a
+          href="/articles/"
+          class="rounded-xl border border-primary/20 px-5 py-4 text-center font-medium text-neutral-700 transition hover:border-primary hover:bg-primary/5 dark:text-neutral-200"
+        >
+          Read CRM articles
+        </a>
+      </div>
+    </section>
   </main>
 </Layout>
