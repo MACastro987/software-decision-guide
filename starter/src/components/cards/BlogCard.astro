@@ -18,7 +18,11 @@ const formattedDate = new Date(publishDate).toLocaleDateString("en-US", {
   day: "numeric"
 });
 
-const postLink = link || `/articles/${slug}`;
+// CRUCIAL: send the InstaDoodle listing card directly to the real review.
+const postLink =
+  title === "InstaDoodle Review 2026: Is It Worth It?"
+    ? "/reviews/instadoodle/"
+    : link || `/articles/${slug}`;
 
 const isHorizontal = layout === "horizontal";
 const hasImage = Boolean(img);
