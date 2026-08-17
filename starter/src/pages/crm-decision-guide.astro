@@ -10,11 +10,18 @@ import Layout from "@/layouts/Layout.astro";
       </p>
 
       <h1 class="mb-5 text-5xl font-brand text-primary">
-        Find your CRM direction.
+        Find the right CRM for your team.
       </h1>
 
-      <p class="mb-10 max-w-2xl text-lg leading-relaxed text-neutral-600 dark:text-neutral-300">
-        Answer five quick questions and get a clearer CRM recommendation path based on your priorities.
+      <p class="mb-4 max-w-2xl text-lg leading-relaxed text-neutral-600 dark:text-neutral-300">
+        Answer five questions to compare HubSpot, Pipedrive, Zoho CRM, and ClickUp.
+        You’ll get one recommendation, who it fits best, when to avoid it, and the
+        strongest alternative.
+      </p>
+
+      <p class="mb-10 max-w-2xl text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+        Recommendations are based on your answers. Affiliate relationships do not
+        determine which product is recommended.
       </p>
 
       <div class="rounded-2xl border border-primary/15 bg-bg-secondary/70 p-6 shadow-sm">
@@ -25,32 +32,88 @@ import Layout from "@/layouts/Layout.astro";
           </div>
 
           <div class="h-2 rounded-full bg-primary/10">
-            <div id="progressBar" class="h-2 rounded-full bg-primary transition-all" style="width: 20%;"></div>
+            <div
+              id="progressBar"
+              class="h-2 rounded-full bg-primary transition-all"
+              style="width: 20%;"
+            ></div>
           </div>
         </div>
 
         <div id="quizPanel">
-          <h2 id="questionText" class="mb-6 text-2xl font-semibold text-neutral-800 dark:text-neutral-100">
+          <h2
+            id="questionText"
+            class="mb-6 text-2xl font-semibold text-neutral-800 dark:text-neutral-100"
+          >
           </h2>
 
           <div id="answerList" class="grid gap-3"></div>
 
-          <p id="rewardText" class="mt-5 min-h-6 text-sm text-primary"></p>
+          <p
+            id="rewardText"
+            class="mt-5 min-h-6 text-sm text-primary"
+            aria-live="polite"
+          ></p>
         </div>
 
-        <div id="resultPanel" class="hidden">
+        <div id="resultPanel" class="hidden" tabindex="-1">
           <div id="recommendationReport">
             <p class="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
-              Your CRM direction
+              Your CRM recommendation
             </p>
 
-            <h2 id="resultTitle" class="mb-4 text-3xl font-brand text-primary"></h2>
+            <h2 id="resultTitle" class="mb-3 text-3xl font-brand text-primary"></h2>
 
-            <p id="resultDescription" class="mb-6 text-lg leading-relaxed text-neutral-600 dark:text-neutral-300"></p>
+            <p
+              id="resultDescription"
+              class="mb-5 text-lg leading-relaxed text-neutral-600 dark:text-neutral-300"
+            ></p>
+
+            <div class="mb-5 grid gap-3 sm:grid-cols-2">
+              <div class="rounded-xl border border-primary/15 bg-bg-primary/50 p-4">
+                <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-primary">
+                  Best for
+                </p>
+                <p
+                  id="resultBestFor"
+                  class="text-sm text-neutral-700 dark:text-neutral-200"
+                ></p>
+              </div>
+
+              <div class="rounded-xl border border-primary/15 bg-bg-primary/50 p-4">
+                <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-primary">
+                  Avoid if
+                </p>
+                <p
+                  id="resultAvoidIf"
+                  class="text-sm text-neutral-700 dark:text-neutral-200"
+                ></p>
+              </div>
+            </div>
+
+            <div class="mb-5 rounded-xl border border-primary/15 bg-bg-primary/50 p-4">
+              <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-primary">
+                Best alternative
+              </p>
+              <p
+                id="resultAlternative"
+                class="text-sm text-neutral-700 dark:text-neutral-200"
+              ></p>
+            </div>
+
+            <a
+              id="resultCta"
+              href="#"
+              target="_blank"
+              rel="noopener"
+              class="mb-6 inline-flex rounded-xl bg-primary px-5 py-3 font-medium text-white transition hover:opacity-90"
+            >
+              Visit recommended CRM
+            </a>
 
             <div class="mb-5 rounded-xl border border-primary/15 bg-bg-primary/50 p-4">
               <p class="mb-3 text-sm font-semibold text-neutral-800 dark:text-neutral-100">
-                Why this direction fits
+                Why this recommendation fits
               </p>
 
               <div id="answerSummaryList" class="grid gap-3"></div>
@@ -61,10 +124,14 @@ import Layout from "@/layouts/Layout.astro";
                 Recommended next steps
               </p>
 
-              <ul id="nextStepList" class="grid gap-2 text-sm text-neutral-600 dark:text-neutral-300"></ul>
+              <ul
+                id="nextStepList"
+                class="grid gap-2 text-sm text-neutral-600 dark:text-neutral-300"
+              ></ul>
 
               <p class="mt-4 text-xs text-neutral-500 dark:text-neutral-400">
-                Affiliate links or sponsored options may appear in the future and will be clearly labeled.
+                Software Decision Guide may earn a commission from some links.
+                Affiliate relationships do not determine our recommendations.
               </p>
             </div>
 
@@ -83,6 +150,7 @@ import Layout from "@/layouts/Layout.astro";
 
             <button
               id="downloadPdfButton"
+              type="button"
               class="rounded-xl bg-primary px-4 py-3 font-medium text-white transition hover:opacity-90"
             >
               Download recommendation PDF
@@ -90,14 +158,81 @@ import Layout from "@/layouts/Layout.astro";
           </div>
 
           <p class="mt-3 text-xs text-neutral-500 dark:text-neutral-400">
-            The download button opens your browser print dialog. Choose “Save as PDF” to keep a copy.
+            The download button opens your browser print dialog. Choose “Save as PDF”
+            to keep a copy.
           </p>
 
-          <button id="restartButton" class="mt-6 rounded-xl border border-primary/20 px-4 py-3 text-neutral-700 dark:text-neutral-200">
+          <button
+            id="restartButton"
+            type="button"
+            class="mt-6 rounded-xl border border-primary/20 px-4 py-3 text-neutral-700 dark:text-neutral-200"
+          >
             Retake guide
           </button>
         </div>
       </div>
+
+      <!--
+        Static provider context gives users, search engines, and AI answer systems
+        useful information even before the interactive quiz is completed.
+      -->
+      <section class="mt-14" aria-labelledby="crm-options-heading">
+        <h2
+          id="crm-options-heading"
+          class="mb-4 text-3xl font-brand text-primary"
+        >
+          Which CRM options does this guide compare?
+        </h2>
+
+        <p class="mb-6 leading-relaxed text-neutral-600 dark:text-neutral-300">
+          The guide compares four different approaches to customer relationship
+          management. The best choice depends on whether your priority is marketing
+          attribution, sales pipeline management, cost and customization, or combining
+          customer tracking with project work.
+        </p>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-xl border border-primary/15 bg-bg-secondary/50 p-5">
+            <h3 class="mb-2 text-lg font-semibold text-neutral-800 dark:text-neutral-100">
+              HubSpot
+            </h3>
+            <p class="text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
+              Best suited to teams that want CRM, marketing, lead capture, sales
+              activity, automation, and reporting to work together.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-primary/15 bg-bg-secondary/50 p-5">
+            <h3 class="mb-2 text-lg font-semibold text-neutral-800 dark:text-neutral-100">
+              Pipedrive
+            </h3>
+            <p class="text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
+              Best suited to sales-focused teams that primarily need a clear pipeline,
+              deal ownership, and consistent follow-up.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-primary/15 bg-bg-secondary/50 p-5">
+            <h3 class="mb-2 text-lg font-semibold text-neutral-800 dark:text-neutral-100">
+              Zoho CRM
+            </h3>
+            <p class="text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
+              Best suited to value-conscious teams that want customization and may
+              benefit from a broader suite of connected business applications.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-primary/15 bg-bg-secondary/50 p-5">
+            <h3 class="mb-2 text-lg font-semibold text-neutral-800 dark:text-neutral-100">
+              ClickUp
+            </h3>
+            <p class="text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
+              A nontraditional option for smaller teams that want customer tracking,
+              tasks, projects, and client delivery inside one flexible workspace.
+            </p>
+          </div>
+        </div>
+      </section>
     </section>
   </main>
 
@@ -202,7 +337,8 @@ import Layout from "@/layouts/Layout.astro";
 
       #downloadActions,
       #restartButton,
-      #quizPanel {
+      #quizPanel,
+      #resultCta {
         display: none !important;
       }
 
@@ -215,113 +351,280 @@ import Layout from "@/layouts/Layout.astro";
   </style>
 
   <script is:inline>
+    /*
+     * DECISION MODEL
+     * Each answer maps to a decision signal. Signals assign weighted points
+     * to vendors based on product fit. Keeping this centralized makes it
+     * easier to add or rebalance vendors later.
+     */
     const questions = [
       {
         text: "What kind of CRM decision are you making?",
         answers: [
-          { label: "Choosing our first CRM", result: "simple", reward: "Good — we’ll prioritize clarity and adoption." },
-          { label: "Replacing a CRM we do not like", result: "salesOps", reward: "Got it — we’ll focus on what needs to improve." },
-          { label: "Choosing between a few CRMs", result: "compare", reward: "Good — we’ll make the tradeoffs easier to explain." },
-          { label: "Improving tracking and reporting", result: "attribution", reward: "Great — measurement needs will shape the recommendation." }
+          {
+            label: "Choosing our first CRM",
+            signal: "simple",
+            reward: "Good — we’ll prioritize clarity, adoption, and a manageable setup."
+          },
+          {
+            label: "Replacing a CRM we do not like",
+            signal: "salesOps",
+            reward: "Got it — we’ll focus on improving the day-to-day sales workflow."
+          },
+          {
+            label: "Choosing between a few CRMs",
+            signal: "compare",
+            reward: "Good — we’ll make the tradeoffs easier to compare."
+          },
+          {
+            label: "Improving tracking and reporting",
+            signal: "attribution",
+            reward: "Great — measurement will carry more weight in the recommendation."
+          }
         ]
       },
       {
         text: "What matters most right now?",
         answers: [
-          { label: "Speed of implementation", result: "simple", reward: "Speed matters — we’ll favor faster launch paths." },
-          { label: "Lowest cost", result: "simple", reward: "Budget matters — we’ll keep complexity low." },
-          { label: "Ease of use", result: "simple", reward: "Adoption matters — simplicity gets more weight." },
-          { label: "Reporting and attribution", result: "attribution", reward: "Reporting matters — we’ll weight analytics fit higher." }
+          {
+            label: "Speed of implementation",
+            signal: "simple",
+            reward: "Speed matters — we’ll favor tools that can get useful quickly."
+          },
+          {
+            label: "Lowest reasonable cost",
+            signal: "budget",
+            reward: "Budget matters — value and flexibility will get more weight."
+          },
+          {
+            label: "Ease of use",
+            signal: "simple",
+            reward: "Adoption matters — unnecessary complexity will count against a tool."
+          },
+          {
+            label: "Reporting and attribution",
+            signal: "attribution",
+            reward: "Reporting matters — measurement capabilities get more weight."
+          }
         ]
       },
       {
         text: "What are you trying to fix first?",
         answers: [
-          { label: "Leads falling through the cracks", result: "salesOps", reward: "Pipeline control is a key signal." },
-          { label: "Sales follow-up is inconsistent", result: "salesOps", reward: "Follow-up discipline matters here." },
-          { label: "Marketing and sales are disconnected", result: "allInOne", reward: "All-in-one tools may become more relevant." },
-          { label: "We cannot see what is working", result: "attribution", reward: "Visibility and source tracking need priority." }
+          {
+            label: "Leads are falling through the cracks",
+            signal: "salesOps",
+            reward: "Pipeline control and clear ownership are important signals."
+          },
+          {
+            label: "Sales follow-up is inconsistent",
+            signal: "salesOps",
+            reward: "We’ll prioritize a CRM that makes follow-up easier to manage."
+          },
+          {
+            label: "Marketing and sales are disconnected",
+            signal: "allInOne",
+            reward: "An integrated customer platform may be a better fit."
+          },
+          {
+            label: "CRM and project or client work are disconnected",
+            signal: "workManagement",
+            reward: "That increases the value of combining customer and project workflows."
+          }
         ]
       },
       {
         text: "How much setup complexity can your team handle?",
         answers: [
-          { label: "Almost none", result: "simple", reward: "Simple setup gets more weight." },
-          { label: "Some setup is fine", result: "allInOne", reward: "A balanced platform may fit." },
-          { label: "We have an admin or technical person", result: "salesOps", reward: "More configuration may be reasonable." },
-          { label: "We need deep customization", result: "custom", reward: "Customization is now a major factor." }
+          {
+            label: "Almost none",
+            signal: "simple",
+            reward: "Simple setup gets more weight."
+          },
+          {
+            label: "Some setup is fine",
+            signal: "allInOne",
+            reward: "A broader platform may be reasonable if the payoff is worthwhile."
+          },
+          {
+            label: "We have an admin or technical person",
+            signal: "custom",
+            reward: "More configurable options become realistic."
+          },
+          {
+            label: "We need deep customization",
+            signal: "custom",
+            reward: "Customization is now a major part of the decision."
+          }
         ]
       },
       {
         text: "How important is marketing attribution?",
         answers: [
-          { label: "Not important yet", result: "simple", reward: "Good — we won’t overbuild the first CRM path." },
-          { label: "Somewhat important", result: "allInOne", reward: "Basic source tracking should be considered." },
-          { label: "Very important", result: "attribution", reward: "Attribution should shape the CRM shortlist." },
-          { label: "Critical to revenue reporting", result: "attribution", reward: "Closed-loop reporting becomes a core requirement." }
+          {
+            label: "Not important yet",
+            signal: "simple",
+            reward: "Good — we won’t overbuild around attribution."
+          },
+          {
+            label: "Somewhat important",
+            signal: "allInOne",
+            reward: "Basic source tracking should still be part of the comparison."
+          },
+          {
+            label: "Very important",
+            signal: "attribution",
+            reward: "Attribution will materially shape the recommendation."
+          },
+          {
+            label: "Critical to revenue reporting",
+            signal: "attribution",
+            reward: "Closed-loop measurement becomes a core requirement."
+          }
         ]
       }
     ];
 
-    const results = {
+    const signalWeights = {
       simple: {
-        title: "Low-friction CRM path",
-        description: "Your answers point toward a CRM that should be simple to launch, easy for the team to adopt, and useful without a heavy admin layer. The priority is not maximum flexibility yet. The priority is getting clean contact records, basic pipeline visibility, and consistent follow-up in place.",
-        nextSteps: [
-          "Shortlist CRMs that can be implemented quickly without a dedicated administrator.",
-          "Compare the basics first: contacts, pipeline stages, reminders, email logging, and simple reporting.",
-          "Avoid paying for advanced automation or complex customization until the team is consistently using the CRM."
-        ]
+        hubspot: 1,
+        pipedrive: 3,
+        zoho: 2,
+        clickup: 2
       },
-      allInOne: {
-        title: "All-in-one growth platform",
-        description: "Your answers suggest that the CRM should not live by itself. You likely need a platform that can connect forms, email, marketing activity, sales follow-up, automation, and reporting in one system so fewer handoffs break between marketing and sales.",
-        nextSteps: [
-          "Compare platforms that combine CRM, forms, email, automation, and reporting.",
-          "Map the lead path from form submission to sales follow-up before choosing a tool.",
-          "Favor tools that reduce disconnected systems without becoming too complex for the team to manage."
-        ]
+      budget: {
+        hubspot: 1,
+        pipedrive: 2,
+        zoho: 4,
+        clickup: 3
       },
       salesOps: {
-        title: "Sales operations CRM",
-        description: "Your answers point toward a CRM decision driven by process control. The tool needs to help the team see pipeline movement, assign ownership, standardize follow-up, and give managers enough visibility to improve sales execution.",
-        nextSteps: [
-          "Define pipeline stages, ownership rules, and follow-up expectations before comparing vendors.",
-          "Prioritize workflow automation, task management, deal visibility, and manager reporting.",
-          "Avoid tools that are easy to start but weak once multiple people need to follow the same sales process."
-        ]
+        hubspot: 2,
+        pipedrive: 4,
+        zoho: 2,
+        clickup: 1
+      },
+      allInOne: {
+        hubspot: 4,
+        pipedrive: 1,
+        zoho: 3,
+        clickup: 2
       },
       attribution: {
-        title: "Attribution-first CRM path",
-        description: "Your answers suggest that measurement should be part of the CRM decision from the beginning. The CRM needs to support source tracking, forms, hidden fields, lifecycle stages, UTMs, and reporting that can connect marketing activity to qualified leads and revenue.",
-        nextSteps: [
-          "Require support for forms, hidden fields, UTMs, source tracking, and lifecycle stages.",
-          "Plan how CRM data will connect to GA4, ad platforms, and sales outcomes.",
-          "Avoid choosing a CRM that looks easy now but makes attribution and revenue reporting difficult later."
-        ]
+        hubspot: 5,
+        pipedrive: 1,
+        zoho: 2,
+        clickup: 0
       },
       custom: {
-        title: "Customizable scale CRM",
-        description: "Your answers point toward a CRM that can adapt to more complex operations. Flexibility, custom fields, integrations, permissions, automation, and reporting depth matter more than the fastest possible launch.",
-        nextSteps: [
-          "Document custom fields, objects, integrations, permissions, and reporting needs before demos.",
-          "Evaluate admin experience, automation depth, API and integration options, and long-term maintainability.",
-          "Expect more setup work in exchange for a better long-term operating system."
-        ]
+        hubspot: 3,
+        pipedrive: 1,
+        zoho: 4,
+        clickup: 2
+      },
+      workManagement: {
+        hubspot: 1,
+        pipedrive: 1,
+        zoho: 2,
+        clickup: 5
       },
       compare: {
-        title: "Structured comparison path",
-        description: "Your answers suggest that you are not ready for a single generic recommendation. You need a structured comparison that makes the tradeoffs clear across cost, speed, adoption, reporting, and long-term flexibility.",
+        hubspot: 1,
+        pipedrive: 1,
+        zoho: 1,
+        clickup: 1
+      }
+    };
+
+    /*
+     * VENDOR METADATA
+     * Keep editorial copy independent from monetization.
+     * When an affiliate program approves SDG, place the tracking URL in
+     * affiliateUrl. The normal vendor URL remains the fallback.
+     */
+    const vendors = {
+      hubspot: {
+        name: "HubSpot",
+        url: "https://www.hubspot.com/products/crm",
+        affiliateUrl: "",
+        description:
+          "HubSpot is the strongest fit when your CRM needs to connect marketing, lead capture, sales activity, automation, attribution, and reporting in one customer platform.",
+        bestFor:
+          "Teams that want marketing and sales data working together and expect their CRM to become part of a broader growth stack.",
+        avoidIf:
+          "You mainly need a straightforward sales pipeline and do not expect to use the broader marketing and customer-platform capabilities.",
+        alternative:
+          "Pipedrive if sales pipeline simplicity matters more than an integrated marketing and customer platform.",
         nextSteps: [
-          "Create a weighted scorecard before looking at pricing pages or booking demos.",
-          "Compare each CRM against the same criteria: cost, speed, adoption, reporting, and flexibility.",
-          "Use the scorecard to explain the decision internally instead of choosing based on brand familiarity alone."
+          "Map the path from lead capture through sales follow-up before implementation.",
+          "Identify which automation and reporting requirements actually matter to your team.",
+          "Choose the smallest product configuration that meets those requirements instead of buying complexity early."
+        ]
+      },
+
+      pipedrive: {
+        name: "Pipedrive",
+        url: "https://www.pipedrive.com/",
+        affiliateUrl: "",
+        description:
+          "Pipedrive is a strong fit when the main job of the CRM is giving a sales team a clear pipeline, consistent follow-up, deal ownership, and visibility into what needs attention next.",
+        bestFor:
+          "Sales-focused teams that want straightforward pipeline management without making a larger marketing platform the center of the implementation.",
+        avoidIf:
+          "Marketing automation, sophisticated attribution, and a tightly integrated marketing-to-sales platform are central requirements.",
+        alternative:
+          "HubSpot if marketing, attribution, lead capture, and sales need to operate inside a more integrated platform.",
+        nextSteps: [
+          "Define your real pipeline stages before configuring the CRM.",
+          "Test whether sales users can manage deals and follow-up without unnecessary administration.",
+          "Confirm the integrations and reporting you need before selecting a plan."
+        ]
+      },
+
+      zoho: {
+        name: "Zoho CRM",
+        url: "https://www.zoho.com/crm/",
+        affiliateUrl: "",
+        description:
+          "Zoho CRM is a strong fit when value, customization, and access to a broader family of business applications matter more than having the simplest possible out-of-the-box experience.",
+        bestFor:
+          "Value-conscious teams that want a configurable CRM and may benefit from using multiple connected Zoho applications over time.",
+        avoidIf:
+          "Your highest priority is a minimal setup process with the least possible configuration or administration.",
+        alternative:
+          "HubSpot if ease of adoption and integrated marketing capabilities matter more than maximizing flexibility and value.",
+        nextSteps: [
+          "Identify which Zoho applications your business could realistically use alongside CRM.",
+          "Compare the customization you need with the administrative effort required to maintain it.",
+          "Test the core sales workflow with real users before committing to a larger implementation."
+        ]
+      },
+
+      clickup: {
+        name: "ClickUp",
+        url: "https://clickup.com/teams/crm",
+        affiliateUrl: "",
+        description:
+          "ClickUp is a nontraditional CRM option for smaller teams that want customer tracking, tasks, projects, and client delivery managed inside the same flexible workspace.",
+        bestFor:
+          "Teams whose customer relationships quickly turn into projects, tasks, deliverables, or ongoing client work and who prefer one shared workspace.",
+        avoidIf:
+          "You need a purpose-built CRM with sophisticated marketing attribution, mature sales-specific functionality, or complex customer lifecycle management.",
+        alternative:
+          "Pipedrive if you need a dedicated sales CRM rather than an adaptable work-management platform.",
+        nextSteps: [
+          "Decide whether customer tracking and project delivery genuinely need to live in the same workspace.",
+          "Test a simple customer pipeline before building more complicated ClickUp workflows.",
+          "Move to a dedicated CRM if sales and marketing requirements begin to outgrow the workspace model."
         ]
       }
     };
 
+    // Stable tie-breaker only. Vendor scores remain the primary decision factor.
+    const tieBreakOrder = ["hubspot", "pipedrive", "zoho", "clickup"];
+
     let currentQuestion = 0;
-    let scores = {};
+    let scores = createEmptyScores();
     let selectedAnswers = [];
 
     const questionText = document.getElementById("questionText");
@@ -334,14 +637,60 @@ import Layout from "@/layouts/Layout.astro";
     const resultPanel = document.getElementById("resultPanel");
     const resultTitle = document.getElementById("resultTitle");
     const resultDescription = document.getElementById("resultDescription");
+    const resultBestFor = document.getElementById("resultBestFor");
+    const resultAvoidIf = document.getElementById("resultAvoidIf");
+    const resultAlternative = document.getElementById("resultAlternative");
+    const resultCta = document.getElementById("resultCta");
     const answerSummaryList = document.getElementById("answerSummaryList");
     const nextStepList = document.getElementById("nextStepList");
     const downloadPdfButton = document.getElementById("downloadPdfButton");
     const restartButton = document.getElementById("restartButton");
 
+    function createEmptyScores() {
+      return Object.keys(vendors).reduce((accumulator, vendorKey) => {
+        accumulator[vendorKey] = 0;
+        return accumulator;
+      }, {});
+    }
+
+    /*
+     * ANALYTICS HOOK
+     * These dataLayer events can be mapped to GA4 through GTM.
+     * TODO: Confirm final GA4 event names/parameters before publishing.
+     */
+    function trackEvent(eventName, parameters = {}) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: eventName,
+        ...parameters
+      });
+    }
+
+    function applySignal(signal) {
+      const weights = signalWeights[signal] || {};
+
+      Object.entries(weights).forEach(([vendorKey, points]) => {
+        scores[vendorKey] += points;
+      });
+    }
+
+    function getWinningVendor() {
+      return Object.keys(vendors).sort((vendorA, vendorB) => {
+        const scoreDifference = scores[vendorB] - scores[vendorA];
+
+        if (scoreDifference !== 0) {
+          return scoreDifference;
+        }
+
+        return tieBreakOrder.indexOf(vendorA) - tieBreakOrder.indexOf(vendorB);
+      })[0];
+    }
+
     function renderQuestion() {
       const question = questions[currentQuestion];
-      const percent = Math.round(((currentQuestion + 1) / questions.length) * 100);
+      const percent = Math.round(
+        ((currentQuestion + 1) / questions.length) * 100
+      );
 
       questionText.textContent = question.text;
       stepLabel.textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
@@ -352,14 +701,30 @@ import Layout from "@/layouts/Layout.astro";
 
       question.answers.forEach((answer) => {
         const button = document.createElement("button");
-        button.className = "rounded-xl border border-primary/20 px-4 py-4 text-left text-neutral-700 transition hover:border-primary hover:bg-primary/5 dark:text-neutral-200";
+
+        button.type = "button";
+        button.className =
+          "rounded-xl border border-primary/20 px-4 py-4 text-left text-neutral-700 transition hover:border-primary hover:bg-primary/5 disabled:cursor-not-allowed disabled:opacity-60 dark:text-neutral-200";
         button.textContent = answer.label;
 
         button.addEventListener("click", () => {
-          scores[answer.result] = (scores[answer.result] || 0) + 1;
+          // Prevent accidental double-clicks from scoring the same question twice.
+          answerList.querySelectorAll("button").forEach((answerButton) => {
+            answerButton.disabled = true;
+          });
+
+          applySignal(answer.signal);
+
           selectedAnswers.push({
             question: question.text,
-            answer: answer.label
+            answer: answer.label,
+            signal: answer.signal
+          });
+
+          trackEvent("sdg_crm_answer", {
+            question_number: currentQuestion + 1,
+            answer_text: answer.label,
+            decision_signal: answer.signal
           });
 
           rewardText.textContent = answer.reward;
@@ -384,18 +749,22 @@ import Layout from "@/layouts/Layout.astro";
 
       selectedAnswers.forEach((selectedAnswer, index) => {
         const item = document.createElement("div");
-        item.className = "rounded-lg border border-primary/10 bg-bg-secondary/40 p-3";
+        item.className =
+          "rounded-lg border border-primary/10 bg-bg-secondary/40 p-3";
 
         const label = document.createElement("p");
-        label.className = "mb-1 text-xs font-semibold uppercase tracking-wide text-primary";
+        label.className =
+          "mb-1 text-xs font-semibold uppercase tracking-wide text-primary";
         label.textContent = `Question ${index + 1}`;
 
         const question = document.createElement("p");
-        question.className = "text-sm font-medium text-neutral-800 dark:text-neutral-100";
+        question.className =
+          "text-sm font-medium text-neutral-800 dark:text-neutral-100";
         question.textContent = selectedAnswer.question;
 
         const answer = document.createElement("p");
-        answer.className = "mt-1 text-sm text-neutral-600 dark:text-neutral-300";
+        answer.className =
+          "mt-1 text-sm text-neutral-600 dark:text-neutral-300";
         answer.textContent = selectedAnswer.answer;
 
         item.appendChild(label);
@@ -406,10 +775,10 @@ import Layout from "@/layouts/Layout.astro";
       });
     }
 
-    function renderNextSteps(result) {
+    function renderNextSteps(vendor) {
       nextStepList.innerHTML = "";
 
-      result.nextSteps.forEach((step) => {
+      vendor.nextSteps.forEach((step) => {
         const item = document.createElement("li");
         item.className = "flex gap-2";
 
@@ -428,34 +797,73 @@ import Layout from "@/layouts/Layout.astro";
     }
 
     function renderResult() {
-      const winningKey = Object.keys(scores).sort((a, b) => scores[b] - scores[a])[0] || "simple";
-      const result = results[winningKey];
+      const winningKey = getWinningVendor();
+      const vendor = vendors[winningKey];
 
       quizPanel.classList.add("hidden");
       resultPanel.classList.remove("hidden");
+
       stepLabel.textContent = "Complete";
       progressPercent.textContent = "100%";
       progressBar.style.width = "100%";
-      resultTitle.textContent = result.title;
-      resultDescription.textContent = result.description;
+
+      resultTitle.textContent = vendor.name;
+      resultDescription.textContent = vendor.description;
+      resultBestFor.textContent = vendor.bestFor;
+      resultAvoidIf.textContent = vendor.avoidIf;
+      resultAlternative.textContent = vendor.alternative;
+
+      const destinationUrl = vendor.affiliateUrl || vendor.url;
+
+      resultCta.href = destinationUrl;
+      resultCta.textContent = `Visit ${vendor.name}`;
+      resultCta.dataset.vendor = winningKey;
+      resultCta.dataset.affiliate = vendor.affiliateUrl ? "true" : "false";
+      resultCta.rel = vendor.affiliateUrl
+        ? "noopener sponsored"
+        : "noopener";
 
       renderAnswerSummary();
-      renderNextSteps(result);
+      renderNextSteps(vendor);
+
+      trackEvent("sdg_crm_recommendation_view", {
+        recommended_vendor: winningKey,
+        recommended_vendor_name: vendor.name,
+        vendor_score: scores[winningKey]
+      });
+
+      resultPanel.focus();
     }
 
+    resultCta.addEventListener("click", () => {
+      const vendorKey = resultCta.dataset.vendor || "";
+      const vendor = vendors[vendorKey];
+
+      trackEvent("sdg_crm_vendor_click", {
+        recommended_vendor: vendorKey,
+        recommended_vendor_name: vendor?.name || "",
+        affiliate_link: resultCta.dataset.affiliate === "true"
+      });
+    });
+
     downloadPdfButton.addEventListener("click", () => {
+      trackEvent("sdg_crm_pdf_download", {
+        recommended_vendor: resultCta.dataset.vendor || ""
+      });
+
       window.print();
     });
 
     restartButton.addEventListener("click", () => {
       currentQuestion = 0;
-      scores = {};
-      selectedAnswers = {};
+      scores = createEmptyScores();
       selectedAnswers = [];
+
       answerSummaryList.innerHTML = "";
       nextStepList.innerHTML = "";
       resultPanel.classList.add("hidden");
       quizPanel.classList.remove("hidden");
+
       renderQuestion();
     });
 
