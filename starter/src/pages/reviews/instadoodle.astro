@@ -42,82 +42,97 @@ const faqSchema = {
 };
 ---
 
-<Layout title="InstaDoodle Review 2026: Is It Worth It? | Software Decision Guide">
-
+<Layout
+  title="InstaDoodle Review 2026: Is It Worth It? | Software Decision Guide"
+  description="InstaDoodle review covering what it does, who it is best for, pros and cons, and whether it is worth considering for AI whiteboard videos."
+>
   <!-- CRUCIAL FOR GEO/AEO -->
   <script
     type="application/ld+json"
     set:html={JSON.stringify(faqSchema)}
   />
 
-  <main class="review-page">
-    <article>
+  <main class="site-container py-28">
+    <article class="mx-auto max-w-3xl">
 
-      <nav class="breadcrumb">
-        <a href="/">Home</a>
-        <span>→</span>
-        <a href="/articles/">Articles</a>
-        <span>→</span>
-        <span>InstaDoodle</span>
-      </nav>
+      <p class="mb-4 text-sm text-neutral-500 dark:text-neutral-400">
+        <a href="/" class="hover:text-primary">Home</a>
+        <span class="mx-2">→</span>
+        <a href="/articles/" class="hover:text-primary">Articles</a>
+        <span class="mx-2">→</span>
+        InstaDoodle
+      </p>
 
-      <p class="eyebrow">Software Decision Guide Review</p>
+      <p class="mb-4 text-sm font-semibold uppercase tracking-wide text-primary">
+        Software Decision Guide Review
+      </p>
 
-      <h1 class="review-title">
+      <h1 class="mb-5 text-5xl font-brand text-primary">
         InstaDoodle Review 2026: Is It Worth It?
       </h1>
 
-      <!-- CRUCIAL: disclosure appears before affiliate CTAs -->
-      <p class="disclosure">
+      <p class="mb-10 max-w-2xl text-lg leading-relaxed text-neutral-600 dark:text-neutral-300">
+        A quick look at what InstaDoodle does, who it fits best, and whether its
+        AI-assisted whiteboard-video workflow is worth considering.
+      </p>
+
+      <!-- CRUCIAL: disclosure before monetized links -->
+      <p class="mb-10 text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
         Disclosure: Software Decision Guide may earn a commission if you
         purchase through links on this page, at no additional cost to you.
       </p>
 
-      <!-- ANSWER-FIRST: optimized for users + AI/search -->
-      <section class="verdict">
-        <h2>Quick verdict</h2>
+      <!-- ANSWER-FIRST -->
+      <section class="mb-12 rounded-2xl border border-primary/15 bg-bg-secondary/70 p-6 shadow-sm">
+        <h2 class="mb-4 text-2xl font-semibold text-primary">
+          Quick verdict
+        </h2>
 
-        <p>
-          <strong>
+        <p class="mb-4 leading-relaxed text-neutral-600 dark:text-neutral-300">
+          <strong class="text-neutral-900 dark:text-white">
             InstaDoodle is worth considering if you specifically want to create
-            whiteboard or doodle-style videos without manually building every
-            animation.
+            whiteboard or doodle-style videos without manually building every animation.
           </strong>
+          {" "}
           Its biggest appeal is simplifying a specialized form of video creation
           with AI-assisted tools.
         </p>
 
-        <p>
+        <p class="mb-6 leading-relaxed text-neutral-600 dark:text-neutral-300">
           It is less compelling if you need a general-purpose video editor or
           primarily create live-action, cinematic, or highly customized video.
         </p>
 
         <a
-          class="affiliate-cta"
           href={affiliateUrl}
           target="_blank"
           rel="sponsored nofollow noopener"
           data-affiliate="instadoodle"
+          class="inline-flex rounded-lg bg-primary px-5 py-3 font-semibold text-white"
         >
           See InstaDoodle
         </a>
       </section>
 
-      <section class="review-section">
-        <h2>Who InstaDoodle is best for</h2>
+      <section class="mb-12">
+        <h2 class="mb-4 text-2xl font-semibold text-primary">
+          Who InstaDoodle is best for
+        </h2>
 
-        <ul class="check-list">
-          <li>Marketers creating explainer or sales videos</li>
-          <li>Small businesses that want simple animated content</li>
-          <li>Educators and trainers explaining complex ideas visually</li>
-          <li>Content creators who like whiteboard animation</li>
+        <ul class="space-y-3 text-neutral-600 dark:text-neutral-300">
+          <li>✓ Marketers creating explainer or sales videos</li>
+          <li>✓ Small businesses that want simple animated content</li>
+          <li>✓ Educators and trainers explaining complex ideas visually</li>
+          <li>✓ Content creators who like whiteboard animation</li>
         </ul>
       </section>
 
-      <section class="review-section">
-        <h2>What is InstaDoodle?</h2>
+      <section class="mb-12">
+        <h2 class="mb-4 text-2xl font-semibold text-primary">
+          What is InstaDoodle?
+        </h2>
 
-        <p>
+        <p class="leading-relaxed text-neutral-600 dark:text-neutral-300">
           InstaDoodle is a cloud-based video creation platform focused on
           doodle and whiteboard animation. Its AI-assisted workflow is designed
           to reduce the amount of manual work required to create animated
@@ -125,29 +140,37 @@ const faqSchema = {
         </p>
       </section>
 
-      <section class="review-section">
-        <h2>What stands out</h2>
+      <section class="mb-12">
+        <h2 class="mb-5 text-2xl font-semibold text-primary">
+          What stands out
+        </h2>
 
-        <div class="feature-grid">
-          <div class="feature-card">
-            <h3>AI-assisted creation</h3>
-            <p>
+        <div class="grid gap-4">
+          <div class="rounded-2xl border border-primary/15 bg-bg-secondary/70 p-6 shadow-sm">
+            <h3 class="mb-2 text-lg font-semibold text-primary">
+              AI-assisted creation
+            </h3>
+            <p class="leading-relaxed text-neutral-600 dark:text-neutral-300">
               Its AI tools are designed to reduce the amount of manual work
               involved in building doodle-style visuals.
             </p>
           </div>
 
-          <div class="feature-card">
-            <h3>Large visual library</h3>
-            <p>
-              InstaDoodle includes a library of ready-made doodle elements for
-              assembling scenes quickly.
+          <div class="rounded-2xl border border-primary/15 bg-bg-secondary/70 p-6 shadow-sm">
+            <h3 class="mb-2 text-lg font-semibold text-primary">
+              Visual library
+            </h3>
+            <p class="leading-relaxed text-neutral-600 dark:text-neutral-300">
+              InstaDoodle includes ready-made doodle elements for assembling
+              scenes more quickly.
             </p>
           </div>
 
-          <div class="feature-card">
-            <h3>Cloud-based workflow</h3>
-            <p>
+          <div class="rounded-2xl border border-primary/15 bg-bg-secondary/70 p-6 shadow-sm">
+            <h3 class="mb-2 text-lg font-semibold text-primary">
+              Cloud-based workflow
+            </h3>
+            <p class="leading-relaxed text-neutral-600 dark:text-neutral-300">
               Projects can be created online rather than requiring a traditional
               desktop animation workflow.
             </p>
@@ -155,79 +178,91 @@ const faqSchema = {
         </div>
       </section>
 
-      <section class="review-section">
-        <h2>Pros and cons</h2>
+      <section class="mb-12">
+        <h2 class="mb-5 text-2xl font-semibold text-primary">
+          Pros and cons
+        </h2>
 
-        <div class="pros-cons">
-          <div>
-            <h3>Pros</h3>
-            <ul class="check-list">
-              <li>Focused on whiteboard animation</li>
-              <li>AI can reduce manual creation work</li>
-              <li>Included visual library</li>
-              <li>Useful for explainers and marketing</li>
+        <div class="grid gap-4 md:grid-cols-2">
+          <div class="rounded-2xl border border-primary/15 bg-bg-secondary/70 p-6 shadow-sm">
+            <h3 class="mb-4 text-lg font-semibold text-primary">Pros</h3>
+            <ul class="space-y-3 text-neutral-600 dark:text-neutral-300">
+              <li>✓ Focused on whiteboard animation</li>
+              <li>✓ AI can reduce manual creation work</li>
+              <li>✓ Included visual library</li>
+              <li>✓ Useful for explainers and marketing</li>
             </ul>
           </div>
 
-          <div>
-            <h3>Cons</h3>
-            <ul class="plain-list">
-              <li>Specialized rather than general-purpose</li>
-              <li>Limited value if you rarely use whiteboard videos</li>
-              <li>AI output may still require editing</li>
+          <div class="rounded-2xl border border-primary/15 bg-bg-secondary/70 p-6 shadow-sm">
+            <h3 class="mb-4 text-lg font-semibold text-primary">Cons</h3>
+            <ul class="space-y-3 text-neutral-600 dark:text-neutral-300">
+              <li>– Specialized rather than general-purpose</li>
+              <li>– Limited value if you rarely use whiteboard videos</li>
+              <li>– AI output may still require editing</li>
             </ul>
           </div>
         </div>
       </section>
 
-      <section class="decision-box">
-        <h2>Should you choose InstaDoodle?</h2>
+      <section class="mb-12 rounded-2xl border border-primary/15 bg-bg-secondary/70 p-6 shadow-sm">
+        <h2 class="mb-4 text-2xl font-semibold text-primary">
+          Should you choose InstaDoodle?
+        </h2>
 
-        <p>
-          <strong>Choose InstaDoodle if:</strong> you want to produce
-          doodle-style explainers quickly and value ease of creation over
-          advanced manual animation control.
+        <p class="mb-4 leading-relaxed text-neutral-600 dark:text-neutral-300">
+          <strong class="text-neutral-900 dark:text-white">
+            Choose InstaDoodle if:
+          </strong>
+          {" "}
+          you want to produce doodle-style explainers quickly and value ease
+          of creation over advanced manual animation control.
         </p>
 
-        <p>
-          <strong>Consider something else if:</strong> you primarily need
-          conventional video editing, live-action production, or advanced
-          animation control.
+        <p class="mb-6 leading-relaxed text-neutral-600 dark:text-neutral-300">
+          <strong class="text-neutral-900 dark:text-white">
+            Consider something else if:
+          </strong>
+          {" "}
+          you primarily need conventional video editing, live-action production,
+          or advanced animation control.
         </p>
 
         <a
-          class="affiliate-cta"
           href={affiliateUrl}
           target="_blank"
           rel="sponsored nofollow noopener"
           data-affiliate="instadoodle"
+          class="inline-flex rounded-lg bg-primary px-5 py-3 font-semibold text-white"
         >
           Check InstaDoodle
         </a>
       </section>
 
-      <!-- Transparency improves trust/E-E-A-T -->
-      <aside class="editorial-note">
-        <strong>Editorial note:</strong>
-        This review is based on currently available product information.
-        Software features, pricing, and offers can change over time.
-      </aside>
+      <section>
+        <h2 class="mb-5 text-2xl font-semibold text-primary">
+          Frequently asked questions
+        </h2>
 
-      <section class="review-section faq-section">
-        <h2>Frequently asked questions</h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <div class="rounded-2xl border border-primary/15 bg-bg-secondary/70 p-6 shadow-sm">
+              <h3 class="mb-2 text-lg font-semibold text-primary">
+                {faq.question}
+              </h3>
 
-        {faqs.map((faq) => (
-          <div class="faq">
-            <h3>{faq.question}</h3>
-            <p>{faq.answer}</p>
-          </div>
-        ))}
+              <p class="leading-relaxed text-neutral-600 dark:text-neutral-300">
+                {faq.answer}
+              </p>
+            </div>
+          ))}
+        </div>
       </section>
 
     </article>
   </main>
 
-  <!-- CRUCIAL: GTM-ready affiliate click event -->
+  <!-- CRUCIAL: GTM-ready affiliate click tracking -->
   <script is:inline>
     document.addEventListener("click", function (event) {
       const link = event.target.closest("a[data-affiliate]");
@@ -244,197 +279,3 @@ const faqSchema = {
     });
   </script>
 </Layout>
-
-<style>
-  .review-page {
-    width: min(760px, calc(100% - 40px));
-    margin: 0 auto;
-    padding: 130px 0 100px;
-  }
-
-  .breadcrumb {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-    margin-bottom: 30px;
-    font-size: 0.85rem;
-    opacity: 0.65;
-  }
-
-  .breadcrumb a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .breadcrumb a:hover {
-    text-decoration: underline;
-  }
-
-  .eyebrow {
-    margin: 0 0 10px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .review-title {
-    margin: 0 0 18px;
-    font-size: clamp(2.4rem, 5vw, 3.5rem);
-    line-height: 1.08;
-  }
-
-  .disclosure {
-    margin: 0 0 42px;
-    font-size: 0.85rem;
-    line-height: 1.5;
-    opacity: 0.65;
-  }
-
-  .review-section {
-    margin: 54px 0;
-  }
-
-  .review-section h2,
-  .verdict h2,
-  .decision-box h2 {
-    margin: 0 0 18px;
-    font-family: inherit;
-    font-size: 1.65rem;
-    font-weight: 700;
-    line-height: 1.25;
-  }
-
-  .review-section h3,
-  .feature-card h3,
-  .pros-cons h3,
-  .faq h3 {
-    margin: 0 0 8px;
-    font-family: inherit;
-    font-size: 1.08rem;
-    font-weight: 700;
-  }
-
-  .review-section p,
-  .verdict p,
-  .decision-box p,
-  .feature-card p,
-  .faq p {
-    margin: 0 0 18px;
-    line-height: 1.75;
-  }
-
-  .verdict {
-    margin-bottom: 56px;
-    padding: 30px;
-    border: 1px solid rgba(100, 120, 150, 0.22);
-    border-radius: 14px;
-    background: rgba(245, 248, 252, 0.7);
-  }
-
-  .affiliate-cta {
-    display: inline-block;
-    margin-top: 6px;
-    padding: 13px 20px;
-    border-radius: 8px;
-    background: #2f72cf;
-    color: white;
-    font-weight: 700;
-    text-decoration: none;
-  }
-
-  .affiliate-cta:hover {
-    opacity: 0.9;
-  }
-
-  .check-list,
-  .plain-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .check-list li,
-  .plain-list li {
-    position: relative;
-    margin: 0 0 12px;
-    padding-left: 24px;
-    line-height: 1.55;
-  }
-
-  .check-list li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    font-weight: 700;
-  }
-
-  .plain-list li::before {
-    content: "–";
-    position: absolute;
-    left: 0;
-  }
-
-  .feature-grid {
-    display: grid;
-    gap: 16px;
-  }
-
-  .feature-card {
-    padding: 22px;
-    border: 1px solid rgba(100, 120, 150, 0.22);
-    border-radius: 12px;
-  }
-
-  .feature-card p {
-    margin-bottom: 0;
-  }
-
-  .pros-cons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-  }
-
-  .decision-box {
-    margin: 58px 0 32px;
-    padding: 30px;
-    border: 1px solid rgba(100, 120, 150, 0.22);
-    border-radius: 14px;
-  }
-
-  .editorial-note {
-    margin: 32px 0 54px;
-    padding: 18px 20px;
-    border-left: 3px solid currentColor;
-    font-size: 0.88rem;
-    line-height: 1.6;
-    opacity: 0.72;
-  }
-
-  .faq {
-    padding: 22px 0;
-    border-bottom: 1px solid rgba(100, 120, 150, 0.18);
-  }
-
-  .faq p {
-    margin-bottom: 0;
-  }
-
-  @media (max-width: 650px) {
-    .review-page {
-      width: min(100% - 32px, 760px);
-      padding-top: 105px;
-    }
-
-    .pros-cons {
-      grid-template-columns: 1fr;
-      gap: 30px;
-    }
-
-    .verdict,
-    .decision-box {
-      padding: 24px;
-    }
-  }
-</style>
